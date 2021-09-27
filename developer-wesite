@@ -1,0 +1,3 @@
+cd developer-website/
+yarn
+yarn start
