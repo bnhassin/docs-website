@@ -1,0 +1,1 @@
+curl -Ls https://download.newrelic.com/install/newrelic-cli/scripts/install.sh | bash && sudo NEW_RELIC_API_KEY=NRAK-L40DS8DL3W4GHD46U57GZ8QKDA0 NEW_RELIC_ACCOUNT_ID=3295317 /usr/local/bin/newrelic install
