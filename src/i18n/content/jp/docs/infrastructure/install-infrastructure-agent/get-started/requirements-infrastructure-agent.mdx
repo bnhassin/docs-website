@@ -5,9 +5,40 @@ tags:
   - Install the infrastructure agent
   - Get started
 metaDescription: 'Compatibility information for infrastructure monitoring, including supported Linux and Windows versions.'
+translationType: human
 ---
 
-[Infrastructure エージェントをインストール](/docs/infrastructure/install-infrastructure-agent/get-started/install-infrastructure-agent-new-relic)する前に、設定するシステムとオンホストインテグレーションが要件を満たしていることを確認します。
+import amazonLinux from 'images/amazon-linux.png'
+
+import centosIcon from 'images/centos-icon.png'
+
+import debian from 'images/Debian.png'
+
+import dockerIcon from 'images/docker-icon.png'
+
+import kubernetesLogo from 'images/kubernetes-logo.png'
+
+import redHatNew2 from 'images/red-hat-new2.png'
+
+import oracleLogo from 'images/oracle-logo.png'
+
+import suseIcon from 'images/suse-icon.png'
+
+import ubuntuIcon from 'images/ubuntu-icon.png'
+
+import windowsServerLogoSmall from 'images/Windows_Server_logo_small.png'
+
+import macOsxLogo from 'images/mac-osx-logo.png'
+
+import ansibleRedLogo from 'images/ansible-red-logo.png'
+
+import chefLogo from 'images/chef-logo.png'
+
+import ebs from 'images/ebs.png'
+
+import puppetLogo from 'images/puppet-logo.png'
+
+[Infrastructureエージェントをインストール](/docs/infrastructure/install-infrastructure-agent/get-started/install-infrastructure-agent-new-relic)する前に、設定するシステムとオンホストインテグレーションが要件を満たしていることを確認します。また、New Relicアカウントも必要です。[無料サインアップ](https://newrelic.com/signup)クレジットカードは不要です。
 
 ## プロセッサアーキテクチャー [#processors]
 
@@ -15,7 +46,8 @@ Infrastructureエージェントは次のプロセッサアーキテクチャに
 
 * **Linux**：x86プロセッサアーキテクチャ用の64ビット（64ビット版のパッケージマネージャーとその依存ファイルも必要）
 * **Windows**：x86プロセッサアーキテクチャ用の32ビットと64ビットの両方
-* **ARM**：[AWS Graviton 2プロセッサ](https://aws.amazon.com/ec2/graviton/)を含むarm64アーキテクチャは、互換性のあるLinuxオペレーティングシステムでサポートされています。オンホストインテグレーションもサポートされています（Oracleインテグレーションを除く）。組み込み型ログ転送はまだ使用できません。
+* **ARM**：[AWS Graviton 2プロセッサ](https://aws.amazon.com/ec2/graviton/)を含むarm64アーキテクチャは、互換性のあるLinuxオペレーティングシステムでサポートされています。オンホストインテグレーションもサポートされています（Oracleインテグレーションを除く）。
+* **macOS**: 64ビットx86プロセッサ（ARMプロセッサはまだサポートされていません）。
 
 ## オペレーティングシステム
 
@@ -37,7 +69,9 @@ Infrastructureエージェントは、メーカーの製品寿命までこれら
   <tbody>
     <tr>
       <td>
-        <ImageSizing width="32px" height="32px" verticalAlign="middle">![amazon linux.png](./images/amazon-linux.png "amazon linux")</ImageSizing>[Amazon Linux](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="amazon linux" alt="amazon linux.png" src={amazonLinux}/>
+
+        [Amazon Linux 2、Amazon Linux 2022（プレビュー）](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
       </td>
 
       <td>
@@ -47,7 +81,9 @@ Infrastructureエージェントは、メーカーの製品寿命までこれら
 
     <tr>
       <td>
-        <ImageSizing width="32px" height="32px" verticalAlign="middle">![centosアイコン](./images/centos-icon.png "centosアイコン")</ImageSizing>[CentOS](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="centos icon" alt="centos icon" src={centosIcon}/>
+
+        [CentOS](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
       </td>
 
       <td>
@@ -57,73 +93,111 @@ Infrastructureエージェントは、メーカーの製品寿命までこれら
 
     <tr>
       <td>
-        <ImageSizing width="32px" height="32px" verticalAlign="middle">![Debian.png](./images/debian.png "Debian アイコン")</ImageSizing>[Debian](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Debian icon" alt="Debian.png" src={debian}/>
+
+        [Debian](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
       </td>
 
       <td>
-        バージョン8（「Jessie」）以上
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <ImageSizing width="32px" height="32px" verticalAlign="middle">![Docker アイコン](./images/docker-icon.png "Docker アイコン")</ImageSizing>[Docker](https://docs.newrelic.com/docs/infrastructure/install-configure-manage-infrastructure/docker-installation/docker-instrumentation-infrastructure)
-      </td>
-
-      <td>
-        Docker 1.12
+        バージョン9（「Stretch」）以降
       </td>
     </tr>
 
     <tr>
       <td>
-        <ImageSizing width="32px" height="32px" verticalAlign="middle">![Kubernetes アイコン](./images/kubernetes-logo.png "Kubernetes アイコン")</ImageSizing>[Kubernetes](https://docs.newrelic.com/docs/integrations/host-integrations/host-integrations-list/kubernetes-monitoring-integration)
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Docker icon" alt="Docker icon" src={dockerIcon}/>
+
+        [Docker](/docs/infrastructure/install-configure-manage-infrastructure/docker-installation/docker-instrumentation-infrastructure)
       </td>
 
       <td>
-        バージョン1.10～1.16でテストを実施
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <ImageSizing width="32px" height="32px" verticalAlign="middle">![redhat アイコン](./images/red-hat-new2.png "redhat アイコン")</ImageSizing>[Red Hat Enterprise Linux（RHEL）](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
-      </td>
-
-      <td>
-        バージョン6以降
+        Docker 1.12以降
       </td>
     </tr>
 
     <tr>
       <td>
-        <ImageSizing width="32px" height="32px" verticalAlign="middle">![suse アイコン](./images/suse-icon.png "suse アイコン")</ImageSizing>[SUSE Linux Enterprise Server（SLES）](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Kubernetes icon" alt="Kubernetes icon" src={kubernetesLogo}/>
+
+        [Kubernetes](/docs/integrations/host-integrations/host-integrations-list/kubernetes-monitoring-integration)
       </td>
 
       <td>
-        バージョン 11.4、12.1、12.2、12.3、および 12.4
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <ImageSizing width="32px" height="32px" verticalAlign="middle">![ubuntu アイコン](./images/ubuntu-icon.png "ubuntu アイコン")</ImageSizing>[Ubuntu](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
-      </td>
-
-      <td>
-        [LTS](https://wiki.ubuntu.com/LTS)バージョン 16.04.x、18.04.x、20.04.x
+        バージョン1.16～1.22でテストを実施
       </td>
     </tr>
 
     <tr>
       <td>
-        <ImageSizing width="32px" height="32px" verticalAlign="middle">![Windows Serverアイコン](./images/Windows_Server_logo_small.png "Windows Server")</ImageSizing>[Windows](/docs/infrastructure-install-windows-server)
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="redhat icon" alt="redhat icon" src={redHatNew2}/>
+
+        [Red Hat Enterprise Linux（RHEL）](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
       </td>
 
       <td>
-        Windows Server 2012、2016、2019、およびサービスパック
+        バージョン7以降
+      </td>
+    </tr>
 
-        Windows 10（Infrastructure エージェントのみがサポートされています）。
+    <tr>
+      <td>
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="oracle icon" alt="Oracle icon" src={oracleLogo}/>
+
+        [Oracle Linux](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
+      </td>
+
+      <td>
+        バージョン7以降
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="suse icon" alt="suse icon" src={suseIcon}/>
+
+        [SUSE Linux Enterprise Server（SLES）](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
+      </td>
+
+      <td>
+        バージョン11.4、12.1、12.2、12.3、12.4、12.5、15、15.1、15.2、15.3
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="ubuntu icon" alt="ubuntu icon" src={ubuntuIcon}/>
+
+        [Ubuntu](/docs/infrastructure-install-amazon-linux-centos-debian-rhel-or-ubuntu)
+      </td>
+
+      <td>
+        [LTS](https://wiki.ubuntu.com/LTS)バージョン 16.04.x、18.04.x、20.04.x、22.04.x 中間リリース20.10、21.04。
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Windows Server" alt="Windows Server icon" src={windowsServerLogoSmall}/>
+
+        [Windows](/docs/infrastructure-install-windows-server)
+      </td>
+
+      <td>
+        Windows Server 2012、2016、2019、2022およびサービスパック
+
+        Windows 10とそのサービスパック。
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="macOS" alt="macOS icon" src={macOsxLogo}/>
+
+        [macOS](/docs/infrastructure/install-infrastructure-agent/macos-installation/install-infrastructure-monitoring-agent-macos/)
+      </td>
+
+      <td>
+        10.15（Catalina）、11（Big Sur）、12（Monterey）。
       </td>
     </tr>
   </tbody>
@@ -131,9 +205,9 @@ Infrastructureエージェントは、メーカーの製品寿命までこれら
 
 Amazon BottleRocketワークロードを監視することもできます。
 
-* EC2インスタンスを実行している場合、[コンテナ化したエージェント](https://docs.newrelic.com/docs/infrastructure/install-infrastructure-agent/linux-installation/docker-container-infrastructure-monitoring)を使用します。
-* EKSで、[Kubernetesインテグレーション](https://one.newrelic.com/launcher/nr1-core.settings?pane=eyJuZXJkbGV0SWQiOiJrOHMtY2x1c3Rlci1leHBsb3Jlci1uZXJkbGV0Lms4cy1zZXR1cCJ9)をインストールします。
-* ECSクラスタについては、[ECSインテグレーション](https://docs.newrelic.com/docs/integrations/elastic-container-service-integration/installation/install-ecs-integration)をディプロイします。
+* EC2インスタンスを実行している場合、[コンテナ化したエージェント](/docs/infrastructure/install-infrastructure-agent/linux-installation/docker-container-infrastructure-monitoring)を使用します。
+* EKSで、[Kubernetesインテグレーション](/docs/kubernetes-pixie/kubernetes-integration/installation/kubernetes-integration-install-configure/#cloud-platforms)をインストールします。
+* ECSクラスタについては、[ECSインテグレーション](/docs/integrations/elastic-container-service-integration/installation/install-ecs-integration)をディプロイします。
 
 ## 固有ホスト名 [#hostname]
 
@@ -146,8 +220,9 @@ Infrastructureエージェントは、ホスト名を使用して各サーバー
 
 Infrastructureエージェントには以下の権限が必要です。
 
-* **Linux**：初期設定では、[エージェントがroot権限で実行およびインストールされます。](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/installation/install-infrastructure-agent-linux#agent-mode-intro)また、[特権的](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/installation/install-infrastructure-agent-linux#install-privileged)もしくは[非特権的](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/installation/install-infrastructure-agent-linux#install-unprivileged)実行モードも選択できます。
+* **Linux**：初期設定では、[エージェントがroot権限で実行およびインストールされます。](/docs/infrastructure/new-relic-infrastructure/installation/install-infrastructure-agent-linux#agent-mode-intro)また、[特権的](/docs/infrastructure/new-relic-infrastructure/installation/install-infrastructure-agent-linux#install-privileged)もしくは[非特権的](/docs/infrastructure/new-relic-infrastructure/installation/install-infrastructure-agent-linux#install-unprivileged)実行モードも選択できます。
 * **Windows**：エージェントはAdministratorアカウントでインストールする必要があり、実行にはAdministrator特権が必要です。
+* **macOS**：エージェントは、どのユーザーアカウントからでもインストールできます。
 
 ## ライブラリ
 
@@ -163,24 +238,24 @@ Infrastructureエージェントは、ホストサーバー上にインストー
 
 ## CPU、メモリ、ディスク使用量 [#resources]
 
-Infrastructureエージェントはかなり軽量です。一般的な CPU、メモリ、ディスク使用量については、[エージェントのパフォーマンスオーバーヘッド](/docs/infrastructure/new-relic-infrastructure/getting-started/infrastructure-agent-performance-overhead)をご覧ください。サポートされるファイルシステムの詳細については、「[ストレージのサンプル属性](https://docs.newrelic.com/docs/infrastructure/new-relic-infrastructure/data-instrumentation/default-infrastructure-attributes-events#storagesample-attributes)」をご覧ください。
+Infrastructureエージェントはかなり軽量です。一般的な CPU、メモリ、ディスク使用量については、[エージェントのパフォーマンスオーバーヘッド](/docs/infrastructure/new-relic-infrastructure/getting-started/infrastructure-agent-performance-overhead)をご覧ください。サポートされるファイルシステムの詳細については、「[ストレージのサンプル属性](/docs/infrastructure/new-relic-infrastructure/data-instrumentation/default-infrastructure-attributes-events#storagesample-attributes)」をご覧ください。
 
 ## 設定管理ツール [#config-mgmt]
 
 Infrastructureエージェントは、いくつかの設定管理とディプロイツールを使用して、プログラミングでディプロイできます。
 
-* <ImageSizing width="32px" height="32px" verticalAlign="middle">![Ansible](./images/ansible-red-logo.png "Ansible")</ImageSizing>
+* <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Ansible" alt="Ansible" src={ansibleRedLogo}/>
 
   [Ansible](/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-ansible)
 
-* <ImageSizing width="32px" height="32px" verticalAlign="middle">![Chef](./images/chef-logo.png "Chef")</ImageSizing>
+* <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Chef" alt="Chef" src={chefLogo}/>
 
   [Chef](/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-chef)
 
-* <ImageSizing width="32px" height="32px" verticalAlign="middle">![EBS](./images/ebs.png "EBS")</ImageSizing>
+* <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="EBS" alt="EBS" src={ebs}/>
 
   [Elastic Beanstalk](/docs/infrastructure/install-infrastructure-agent/config-management-tools/install-infrastructure-agent-aws-elastic-beanstalk)
 
-* <ImageSizing width="32px" height="32px" verticalAlign="middle">![Puppet](./images/puppet-logo.png "Puppet")</ImageSizing>
+* <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Puppet" alt="Puppet" src={puppetLogo}/>
 
   [Puppet](/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-puppet)

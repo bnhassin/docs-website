@@ -1,6 +1,6 @@
 const fs = require('fs');
-const parse = require('rehype-parse');
 const path = require('path');
+const parse = require('rehype-parse');
 const unified = require('unified');
 const rehypeStringify = require('rehype-stringify');
 const addAbsoluteImagePath = require('./rehype-plugins/utils/addAbsoluteImagePath');
@@ -8,8 +8,20 @@ const getAgentName = require('./src/utils/getAgentName');
 
 const dataDictionaryPath = `${__dirname}/src/data-dictionary`;
 const siteUrl = 'https://docs.newrelic.com';
-const additionalLocales = ['jp'];
-const quote = (str) => `"${str}"`;
+const additionalLocales = ['jp', 'kr'];
+const allFolders = fs
+  .readdirSync(`${__dirname}/src/content/docs`)
+  .filter((folder) => !folder.startsWith('.'));
+const doNotIgnoreFolders =
+  process.env.BUILD_FOLDERS && process.env.BUILD_FOLDERS.split(',');
+const ignoreFolders = process.env.BUILD_FOLDERS
+  ? allFolders
+      .filter(
+        (folder) =>
+          !doNotIgnoreFolders.includes(folder) && folder !== 'release-notes'
+      )
+      .map((folder) => `${__dirname}/src/content/docs/${folder}/*`)
+  : [];
 
 const autoLinkHeaders = {
   resolve: 'gatsby-remark-autolink-headers',
@@ -22,7 +34,6 @@ const autoLinkHeaders = {
 module.exports = {
   flags: {
     DEV_SSR: true,
-    PRESERVE_WEBPACK_CACHE: true,
     PRESERVE_FILE_DOWNLOAD_CACHE: true,
   },
   siteMetadata: {
@@ -50,9 +61,9 @@ module.exports = {
     {
       resolve: '@newrelic/gatsby-theme-newrelic',
       options: {
-        forceTrailingSlashes: true,
+        oneTrustID: 'e66f9ef1-3a12-4043-b7c0-1a2ea66f6d41',
         layout: {
-          contentPadding: '2rem',
+          contentPadding: '1.5rem',
           maxWidth: '1600px',
           component: require.resolve('./src/layouts'),
           mobileBreakpoint: '760px',
@@ -63,15 +74,53 @@ module.exports = {
         },
         prism: {
           languages: [
-            'xml',
-            'xml-doc',
-            'c',
-            'go',
-            'java',
+            'css',
+            'js',
+            'aspnet',
+            'batch',
+            'csv',
+            'cmake',
+            'dax',
+            'diff',
+            'django',
+            'jinja2',
+            'docker',
+            'dockerfile',
+            'elixir',
+            'erlang',
+            'gettext',
+            'pascal',
+            'parser',
+            'nginx',
+            'n1ql',
+            'monkey',
+            'mongodb',
+            'liquid',
+            'json5',
+            'jsdoc',
+            'mustache',
+            'powershell',
+            'promql',
+            'protobuf',
+            'puppet',
+            'jsx',
+            'regex',
+            'ruby',
+            'scala',
+            'shell',
+            'swift',
+            'systemd',
+            'toml',
+            'velocity',
+            'vim',
             'php',
             'phpdoc',
+            'xml',
+            'xml-doc',
             'csharp',
-            'python',
+            'md',
+            'java',
+            'razor',
           ],
         },
         splitio: {
@@ -87,108 +136,38 @@ module.exports = {
           },
           debug: false,
         },
-        relatedResources: {
-          swiftype: {
-            resultsPath: `${__dirname}/src/data/swiftype-resources.json`,
-            engineKey: 'Ad9HfGjDw4GRkcmJjUut',
-            refetch: Boolean(process.env.BUILD_RELATED_CONTENT),
-            limit: 3,
-            filter: ({ node }) => {
-              if (node.internal.type !== 'Mdx') {
-                return false;
-              }
-
-              const includedTypes = ['apiDoc', 'troubleshooting'];
-              const excludedFolders = [
-                'src/content/docs/release-notes',
-                'src/content/whats-new',
-              ];
-
-              const {
-                frontmatter,
-                fields: { fileRelativePath },
-              } = node;
-
-              if (
-                excludedFolders.some((path) => fileRelativePath.includes(path))
-              ) {
-                return false;
-              }
-
-              return (
-                frontmatter.type == null ||
-                includedTypes.includes(frontmatter.type)
-              );
-            },
-            getParams: ({ node, slug }) => {
-              const { tags, title } = node.frontmatter;
-
-              const locale = slug && slug.split('/')[0];
-              const postfix = additionalLocales.includes(locale)
-                ? `-${locale}`
-                : '';
-
-              return {
-                q: tags ? tags.map(quote).join(' OR ') : title,
-                search_fields: {
-                  page: [
-                    'tags^10',
-                    'quick_start_name^8',
-                    'body^5',
-                    'title^1.5',
-                    '*',
-                  ],
-                },
-                filters: {
-                  page: {
-                    type: [
-                      `docs${postfix}`,
-                      `developer${postfix}`,
-                      `opensource${postfix}`,
-                      `quick_starts${postfix}`,
-                    ],
-                    document_type: [
-                      '!views_page_menu',
-                      '!term_page_api_menu',
-                      '!term_page_landing_page',
-                    ],
-                  },
-                },
-              };
-            },
-          },
-        },
         newrelic: {
           configs: {
             development: {
               instrumentationType: 'proAndSPA',
-              accountId: '10175106',
+              accountId: '10956800',
               trustKey: '1',
-              agentID: '23865145',
-              licenseKey: '528f970912',
-              applicationID: '23865145',
-              beacon: 'staging-bam.nr-data.net',
-              errorBeacon: 'staging-bam.nr-data.net',
+              agentID: '35094418',
+              licenseKey: 'NRJS-649173eb1a7b28cd6ab',
+              applicationID: '35094418',
+              beacon: 'staging-bam-cell.nr-data.net',
+              errorBeacon: 'staging-bam-cell.nr-data.net',
             },
             production: {
               instrumentationType: 'proAndSPA',
-              accountId: '10175106',
+              accountId: '10956800',
               trustKey: '1',
-              agentID: '29883416',
-              licenseKey: '23448da482',
-              applicationID: '29883416',
+              agentID: '35094662',
+              licenseKey: 'NRJS-649173eb1a7b28cd6ab',
+              applicationID: '35094662',
               beacon: 'staging-bam-cell.nr-data.net',
               errorBeacon: 'staging-bam-cell.nr-data.net',
             },
           },
         },
         tessen: {
+          tessenVersion: '1.14.0',
           product: 'DOC',
           subproduct: 'TDOC',
           segmentWriteKey: 'AEfP8c1VSuFxhMdk3jYFQrYQV9sHbUXx',
           trackPageViews: true,
           pageView: {
-            name: 'pageView',
+            eventName: 'pageView',
             category: 'DocPageView',
             getProperties: ({ location, env }) => ({
               path: location.pathname,
@@ -196,12 +175,14 @@ module.exports = {
             }),
           },
         },
-        googleTagManager: {
-          trackingId: 'UA-3047412-33',
-          src: 'https://www.googletagmanager.com/gtag/js',
-          options: {
-            anonymize_ip: true,
-          },
+        signup: {
+          environment: process.env.ENVIRONMENT || 'staging',
+          signupUrl:
+            process.env.SIGNUP_URL ||
+            'https://signup-receiver.staging-service.newrelic.com',
+          reCaptchaToken:
+            process.env.RECAPTCHA_TOKEN ||
+            '6LdMFd8UAAAAAApWFzm8YCyuGCUfg57U1WvqVYqC',
         },
       },
     },
@@ -226,6 +207,7 @@ module.exports = {
       options: {
         name: 'markdown-pages',
         path: `${__dirname}/src/content`,
+        ignore: ignoreFolders,
       },
     },
     {
@@ -240,6 +222,10 @@ module.exports = {
       options: {
         name: 'translated-content',
         path: `${__dirname}/src/i18n/content`,
+        ignore:
+          process.env.BUILD_I18N === 'false'
+            ? [`${__dirname}/src/i18n/content/*`]
+            : [],
       },
     },
     {
@@ -247,6 +233,10 @@ module.exports = {
       options: {
         name: 'translated-nav',
         path: `${__dirname}/src/i18n/nav`,
+        ignore:
+          process.env.BUILD_I18N === 'false'
+            ? [`${__dirname}/src/i18n/nav/*`]
+            : [],
       },
     },
     {
@@ -285,9 +275,6 @@ module.exports = {
               maxWidth: 850,
             },
           },
-          autoLinkHeaders,
-          // This MUST come after `gatsby-remark-autolink-headers` to ensure the
-          // link created for the icon has the proper id
           'gatsby-remark-custom-heading-ids',
         ],
       },
@@ -382,6 +369,7 @@ module.exports = {
                 getStartedLink
                 learnMoreLink
                 summary
+                isFeatured
               }
               fields {
                 slug
@@ -415,6 +403,7 @@ module.exports = {
                   getStartedLink: frontmatter.getStartedLink,
                   body: htmlParser.stringify(parsedHtml),
                   docUrl: new URL(fields.slug, siteUrl).href,
+                  isFeatured: frontmatter.isFeatured,
                 };
               }
             ),
@@ -522,17 +511,32 @@ module.exports = {
       },
     },
     'gatsby-source-nav',
-    {
-      resolve: 'gatsby-plugin-auto-index-pages',
-      options: {
-        skippedDirectories: ['', 'whats-new', 'docs/release-notes'],
-      },
-    },
     'gatsby-plugin-meta-redirect',
     {
       resolve: 'gatsby-plugin-gatsby-cloud',
       options: {
-        allPageHeaders: ['Referrer-Policy: no-referrer-when-downgrade'],
+        allPageHeaders: [
+          'Referrer-Policy: no-referrer-when-downgrade',
+          'Content-Security-Policy: frame-ancestors *.newrelic.com',
+        ],
+      },
+    },
+    // https://www.gatsbyjs.com/plugins/gatsby-plugin-typegen/
+    {
+      resolve: 'gatsby-plugin-typegen',
+      options: {
+        outputPath: 'src/__generated__/gatsby-types.d.ts',
+        emitSchema: {
+          'src/__generated__/gatsby-schema.graphql': true,
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `jsx`, // defaults to "React"
+        allExtensions: true, // defaults to false
       },
     },
   ],

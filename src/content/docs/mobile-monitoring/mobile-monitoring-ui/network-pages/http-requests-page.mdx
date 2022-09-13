@@ -128,8 +128,7 @@ For a description of the non-Enterprise **HTTP requests** UI page, see [Legacy H
 
 To view any **HTTP requests** chart in Insights:
 
-1. Select <Icon name="fe-more-horizontal"/>
-   for any chart.
+1. Select <Icon name="fe-more-horizontal"/> for any chart.
 2. Select **View query > View in Insights**.
 3. Optional: Add the data to a dashboard, or [share it by using a permalink](/docs/data-analysis/user-interface-functions/share-your-data/permalink).
 4. To delve deeper into your request data, query [`MobileRequest`](/docs/insights/nrql-new-relic-query-language/nrql-query-examples/insights-query-examples-new-relic-mobile#mobilerequest-examples) events and [attributes](/docs/insights/insights-data-sources/default-data/mobile-events-attributes#mobilerequest-attributes).
@@ -161,64 +160,43 @@ Accounts that do not have an Enterprise-level subscription see a different **HTT
     * Average throughput
     * Average data transfer
 
-    ![screen http requests details.png](./images/screen-http-requests-details_0.png "screen http requests details.png")
+      To view legacy details: **[one.newrelic.com](https://one.newrelic.com) > Mobile > (select an app) > Network > HTTP requests > (select a request): > Switch to legacy requests**.
 
-    <figcaption>
-      **[one.newrelic.com](https://one.newrelic.com) > Mobile > (select an app) > Network > HTTP requests > (select a request):** Here is an example of a selected HTTP request for an app monitored with mobile. To view details for the transaction, select **App server drill-down**.
-    </figcaption>
+      <table>
+        <thead>
+          <tr>
+            <th width={250}>
+              **If you want to...**
+            </th>
 
-    <table>
-      <thead>
-        <tr>
-          <th width={250}>
-            **If you want to...**
-          </th>
+            <th>
+              **Do this**
+            </th>
+          </tr>
+        </thead>
 
-          <th>
-            **Do this**
-          </th>
-        </tr>
-      </thead>
+        <tbody>
+          <tr>
+            <td>
+              View information to a specific [version](/docs/mobile-monitoring-ui/versions) of your app
+            </td>
 
-      <tbody>
-        <tr>
-          <td>
-            View information to a specific [version](/docs/mobile-monitoring-ui/versions) of your app
-          </td>
+            <td>
+              Select **Versions** from the side bar (if applicable).
+            </td>
+          </tr>
 
-          <td>
-            Select **Versions** from the side bar (if applicable).
-          </td>
-        </tr>
+          <tr>
+            <td>
+              Change the time period
+            </td>
 
-        <tr>
-          <td>
-            Change the time period
-          </td>
-
-          <td>
-            Use the [**time picker**](/docs/site/timepicker-setting-time-periods-to-view-data) below the New Relic menu bar.
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            View the [related app's transaction](/docs/applications-menu/transactions-dashboard)
-          </td>
-
-          <td>
-            <Callout variant="important">
-              This feature is not available when the related app has [distributed tracing](/docs/apm/distributed-tracing/getting-started/introduction-distributed-tracing) enabled.
-            </Callout>
-
-            * To view the related app's transaction: Select **App server drill-down**, then view the **Transactions** page for the app associated with this HTTP request.
-            * To return to the **HTTP requests** page, select your browser's **Back** function.
-
-            ![icon app server.png](./images/icon-app-server_0.png "icon app server.png")
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <td>
+              Use the [**time picker**](/docs/site/timepicker-setting-time-periods-to-view-data) below the New Relic menu bar.
+            </td>
+          </tr>
+        </tbody>
+      </table>
   </Collapser>
 
   <Collapser

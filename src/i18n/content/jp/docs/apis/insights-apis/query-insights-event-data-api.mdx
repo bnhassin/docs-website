@@ -1,10 +1,9 @@
 ---
 title: InsightsクエリAPI
 tags:
-  - Insights
   - Event data sources
-  - Insights API
-metaDescription: Use the New Relic Insights API and a query key to make remote queries to the events database via a standard HTTPS request.
+metaDescription: The New Relic Insights query API is largely deprecated.
+translationType: human
 ---
 
 New Relic InsightsクエリAPIは、 NRQLクエリをするためのREST APIです。
@@ -48,7 +47,7 @@ InsightsのクエリAPIを使用するには、クエリキーが必要です。
 * クエリ文字列は4000バイト未満でなければなりません。
 * URLには有効なアカウントIDを含める必要があります。
 * `X-Query-Key`には有効な[クエリキー](#register)を含める必要があります。
-* `Content-Type`は`application/json`にする必要があります。
+* `Content-Type`は`application/json`である必要があります。
 
 ### Linux [#unix]
 

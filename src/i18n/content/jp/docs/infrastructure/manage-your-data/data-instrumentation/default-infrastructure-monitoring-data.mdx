@@ -1,19 +1,16 @@
 ---
-title: 'デフォルトのインフラストラクチャ モニタリングデータ '
+title: デフォルトのインフラストラクチャモニタリングデータ
 tags:
   - Infrastructure
   - Manage your data
   - Data and instrumentation
 metaDescription: A list of the default events and attributes used by New Relic to collect and store your infrastructure monitoring and host data.
+translationType: human
 ---
 
-<Callout variant="important">
-  2021年03月22日の時点で、Insightsをアップグレードしてウェブとモバイルの体験を向上しています。InsightsのすべてのURLは、New Relic Oneの対応する[ダッシュボード](/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards)に自動的にリダイレクトされます。この移行について、およびこの移行を容易に計画することの詳細については、[Explorers Hubの投稿](https://discuss.newrelic.com/t/important-insights-upgrade-to-nr1-dashboards/127823)をご覧ください。
-</Callout>
+New Relicのインフラストラクチャ監視エージェントは、6つのプライマリ[イベント](/docs/using-new-relic/data/understand-data/new-relic-data-types#event-data)を使用してデータを収集および表示します。各イベントには、各種メトリクスおよびメタデータを表す[属性](/docs/accounts-partnerships/education/getting-started-new-relic/glossary#attribute)が関連付けられます。
 
-New RelicのInfrastructure監視エージェントは、6つのプライマリ[イベント](/docs/using-new-relic/data/understand-data/new-relic-data-types#event-data)を使用してデータを収集および表示します。各イベントには、各種メトリックスおよびメタデータを表す[属性](/docs/accounts-partnerships/education/getting-started-new-relic/glossary#attribute)が関連付けられています。
-
-インフラストラクチャのデータについて理解すると、次のことを行うことができます：
+インフラストラクチャのデータについて理解すると、次のことができます。
 
 * インフラストラクチャのモニタリング UIについての理解を深める。
 * [インフラストラクチャデータを管理する](/docs/infrastructure/install-infrastructure-agent/manage-your-agent/manage-infrastructure-data-reporting)。
@@ -21,15 +18,17 @@ New RelicのInfrastructure監視エージェントは、6つのプライマリ[�
 * [データのクエリ](#query-data)実行を改善する。
 * [カスタムアトリビュート](/docs/infrastructure/new-relic-infrastructure/configuration/configure-infrastructure-agent#attributes)を使用して、よりよいモニタリングソリューションを設定する。
 
-## Infrastructureイベント [#infrastructure-events]
+当社のインフラストラクチャ監視エージェントをお試しになりますか？[New Relicアカウントの作成](https://newrelic.com/signup)は無料です。クレジットカードは不要です。
 
-インフラストラクチャエージェントと一部の[インフラストラクチャインテグレーション](/docs/intro-infrastructure-integrations)によりデフォルトでレポートされる[イベント](/docs/telemetry-data-platform/ingest-manage-data/understand-data/new-relic-data-types#events-new-relic)は次のとおりです。
+## インストラクチャイベント
 
-インフラストラクチャ UIの可視化を作成するにあたっては、以下のイベントに添付される属性（メトリクスおよびメタデータ）を利用します。このデータに関する[カスタムクエリとチャートを作成](#query-data)することもできます。
+インフラストラクチャエージェントと一部の[インフラストラクチャインテグレーション](/docs/telemetry-data-platform/ingest-manage-data/understand-data/new-relic-data-types#events-new-relic)によりデフォルトでレポートされる[イベント](/docs/intro-infrastructure-integrations)は、次のとおりです。
 
-インテグレーションを使用している場合、報告されたデータの詳細については、そのインテグレーションの文書をご覧ください。一般的なAWS属性については、[AWSデータ](#shared-attributes)をご覧ください。
+インフラストラクチャ UIの可視化を作成する際は、これらのイベントに添付される属性（メタデータおよびメトリクス）を使用します。このデータの[カスタムクエリとチャートを作成](#query-data)することもできます。
 
-次の表からイベント名を選択して属性を確認します。
+インテグレーションを使用している場合、報告されたデータの詳細については、そのインテグレーションの文書を参照してください。一般的なAWS属性については、[AWSデータ](#shared-attributes)を参照してください。
+
+次の表からイベント名を選択し、その属性を確認します。
 
 <table>
   <thead>
@@ -47,38 +46,38 @@ New RelicのInfrastructure監視エージェントは、6つのプライマリ[�
   <tbody>
     <tr>
       <td>
-        [`SystemSample`](https://docs.newrelic.co.jp/attribute-dictionary?attribute_name=&events_tids%5B%5D=8407)
+        [`SystemSample`](/attribute-dictionary/?event=SystemSample)
       </td>
 
       <td>
-        `SystemSample`は、サーバー全体（CPU、メモリ、ディスク、ネットワークを含む）の現在の全体的状態を記述するデータを含んでいます。このデータのスナップショットは5秒おきに記録され、`SystemSample`イベントにパッケージされます。これがNew Relicに送信されます。このデータは[**Hosts**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-hosts-page-measure-resource-usage)に表示されます。
+        `SystemSample` には、CPU、メモリ、ディスク、ネットワークなど、サーバー全体の現在の状態を説明するデータが含まれます。このデータのスナップショットは5秒おきに記録され、`SystemSample`イベントにパッケージされます。これがNew Relicに送信されます。このデータは[**ホスト**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-hosts-page-measure-resource-usage)に表示されます。
       </td>
     </tr>
 
     <tr>
       <td>
-        [`ProcessSample`](https://docs.newrelic.co.jp/attribute-dictionary?attribute_name=&events_tids%5B%5D=8412)
+        [`ProcessSample`](/attribute-dictionary/?event=ProcessSample)
       </td>
 
       <td>
-        `ProcessSample`は、単一システムで実行されているシステムから詳細なリソース使用情報を収集します。一つひとつのアクティブプロセスに関して、このデータのスナップショットは20秒おきに記録され、`ProcessSample`イベントにパッケージされます。これがNew Relicに送信されます。このデータは[**Processes**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-processes-page-inspect-process-performance)に表示されます。
+        `ProcessSample` は、単一システムで実行されているプログラムから詳細なリソース使用情報を収集します。すべてのアクティブプロセスに関して、このデータのスナップショットは20秒ごとに記録され、`ProcessSample`イベントにパッケージされ、これがNew Relicに送信されます。このデータは[**プロセス**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-processes-page-inspect-process-performance)に表示されます。
 
         <Callout variant="important">
-          プロセスメトリックスは、2020年07月20日以後に作成されたアカウントについては、デフォルトでNew Relicに送信されません。[プロセスメトリックスを有効にして](/docs/infrastructure/install-configure-manage-infrastructure/configuration/infrastructure-configuration-settings#enable-process-metrics)このデータをInfrastructureモニタリングUIで取得します。
+          プロセスメトリクスは、2020年7月20日以降に作成されたアカウントについては、デフォルトでNew Relicには送信されません。[プロセスメトリクスを有効化](/docs/infrastructure/install-configure-manage-infrastructure/configuration/infrastructure-configuration-settings#enable-process-metrics)し、このデータをインフラストラクチャモニタリングUIで取得します。
         </Callout>
       </td>
     </tr>
 
     <tr>
       <td>
-        [`StorageSample`](https://docs.newrelic.co.jp/attribute-dictionary?attribute_name=&events_tids%5B%5D=8417)
+        [`StorageSample`](/attribute-dictionary/?event=StorageSample)
       </td>
 
       <td>
-        `StorageSample`は、サーバーに関連する単一のストレージデバイスを表します。各サンプルは、デバイスや使用するファイルシステムの種類、現在の使用量および容量についての詳細な情報を収集します。一つひとつのマウントしたファイルシステムに関して、このデータのスナップショットは20秒おきに記録され、`StorageSample`イベントにパッケージされます。これがNew Relicに送信されます。このデータは[**Storage**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-storage-page-evaluate-disk-usage-efficiency)に表示されます。
+        `StorageSample` は、サーバーに関連する単一のストレージデバイスを表します。各サンプルは、デバイスや使用するファイルシステムの種類、現在の使用量および容量についての説明情報を収集します。各マウントファイルシステムに関して、このデータのスナップショットは20秒ごとに記録され、`StorageSample`イベントにパッケージされ、New Relicに送信されます。このデータは[**ストレージ**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-storage-page-evaluate-disk-usage-efficiency)に表示されます。
 
         <Callout variant="important">
-          サーバーが、次の表にあるサポートされたファイルシステム以外のファイルシステムを有するディスクを使用している場合、`StorageSample`イベントはこのディスクについては生成されません。
+          サーバーが、次の表にあるサポートされているファイルシステム以外のファイルシステムを有するディスクを使用している場合、`StorageSample`イベントはこれらのディスクには生成されません。
         </Callout>
 
         <CollapserGroup>
@@ -96,6 +95,7 @@ New RelicのInfrastructure監視エージェントは、6つのプライマリ[�
             * `ext3`
             * `ext4`
             * `hfs`
+            * `zfs`
           </Collapser>
 
           <Collapser
@@ -105,7 +105,7 @@ New RelicのInfrastructure監視エージェントは、6つのプライマリ[�
             サポートされているWindowsストレージファイルシステム：
 
             * `NTFS`
-            * `ReFS`（バージョン1.0.976以降）
+            * `ReFS` （バージョン1.0.976以上）
           </Collapser>
         </CollapserGroup>
       </td>
@@ -113,131 +113,137 @@ New RelicのInfrastructure監視エージェントは、6つのプライマリ[�
 
     <tr>
       <td>
-        [`NetworkSample`](https://docs.newrelic.co.jp/attribute-dictionary?attribute_name=&events_tids%5B%5D=8422)
+        [`NetworkSample`](/attribute-dictionary/?event=NetworkSample)
       </td>
 
       <td>
-        `NetworkSample`は、サーバーに関連する各ネットワークデバイスの詳細情報と状態の情報を取得します。これには、デバイスのインタフェースおよびアドレス情報、ならびに現在の使用量データが含まれます。一つひとつの添付ネットワークインタフェースに関して、このデータのスナップショットは10秒おきに記録され、`NetworkSample`イベントにパッケージされます。これがNew Relicに送信されます。このデータは[**Network**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-network-page-measure-compare-capacity)に表示されます。
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        [`ContainerSample`](/attribute-dictionary?attribute_name=&events_tids%5B0%5D=10181)
-      </td>
-
-      <td>
-        `ContainerSample`は、各Dockerコンテナに関する説明と状態に関する情報を収集します。この情報には、コンテナのID、名前、イメージ、イメージ名、またCPU、メモリ、ネットワークに関するメトリックスも含まれています。各コンテナに関して、このデータのスナップショットは15秒おきに記録され、`ContainerSample`イベントにパッケージされます。これがNew Relicに送信されます。このデータは[**Containers**UIページ](https://docs.newrelic.co.jp/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-hosts-page-measure-resource-usage)に表示されます。詳しくは、[Dockerモニタリング](/docs/infrastructure/new-relic-infrastructure/data-instrumentation/docker-instrumentation-infrastructure)をご覧ください。
+        `NetworkSample` は、サーバーに関連する各ネットワークデバイスの説明と状態情報を取得します。これには、デバイスのインタフェースおよびアドレス情報、ならびに現在の使用量データが含まれます。各添付ネットワークインタフェースに関して、このデータのスナップショットは10秒ごとに記録され、`NetworkSample`イベントにパッケージされ、New Relicに送信されます。このデータは[**ネットワーク**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-network-page-measure-compare-capacity)に表示されます。
       </td>
     </tr>
 
     <tr>
       <td>
-        [`InfrastructureEvent`](https://docs.newrelic.co.jp/attribute-dictionary?attribute_name=&events_tids%5B%5D=8402)
+        [`ContainerSample`](/attribute-dictionary/?event=ContainerSample)
       </td>
 
       <td>
-        `InfrastructureEvent`は、システムがライブ状態のときに発生する変化（デルタ）を説明します。インベントリまたはシステムの状態が追加/削除/変更されると、New Relicは、その活動を記録する`InfrastructureEvent`を作成します。このデータは[**Events**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-events-page-live-feed-every-config-change)に表示されます。
+        `ContainerSample` は、各Dockerコンテナの説明と状態情報を収集します。この情報には、コンテナのID、名前、イメージ、イメージ名、またCPU、メモリ、ネットワークに関するメトリクスが含まれます。各コンテナに関して、このデータのスナップショットは15秒ごとに記録され、`ContainerSample`イベントにパッケージされ、New Relicに送信されます。このデータは[**コンテナ**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-hosts-page-measure-resource-usage)に表示されます。詳細については、[Dockerモニタリング](/docs/infrastructure/new-relic-infrastructure/data-instrumentation/docker-instrumentation-infrastructure)を参照してください。
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        [`InfrastructureEvent`](/attribute-dictionary/?event=InfrastructureEvent)
+      </td>
+
+      <td>
+        `InfrastructureEvent` は、システムがライブ状態のときに発生する変化（デルタ）を説明します。インベントリまたはシステム状態が追加/削除/変更されると、New Relicは、その活動を記録する`InfrastructureEvent`を生成します。このデータは[**イベント**UIページ](/docs/infrastructure/new-relic-infrastructure/infrastructure-ui-pages/infrastructure-events-page-live-feed-every-config-change)に表示されます。
       </td>
     </tr>
   </tbody>
 </table>
 
-Infrastructureインテグレーションデータの詳細に間しては、[特定のインテグレーションに関するドキュメント](/docs/integrations)を参照してください。
+インフラストラクチャインテグレーションデータの詳細については、[特定のインテグレーションに関するドキュメント](/docs/infrastructure/infrastructure-integrations/get-started/introduction-infrastructure-integrations)を参照してください。
 
-AWSインテグレーションが有効になっている場合、Infrastructureイベントに[AWS属性](#shared-attributes)を添付することもできます。
+AWSインテグレーションが有効になっている場合、インフラストラクチャイベントに[AWS属性](#shared-attributes)を添付することもできます。
 
-## Infrastructureデータをクエリする [#query-data]
+## インフラストラクチャデータをクエリ [#query-data]
 
-[Infrastructureデータをクエリする](/docs/using-new-relic/data/understand-data/query-new-relic-data)ことで、問題のトラブルシューティングまたはチャートの作成、あるいは利用可能なデータの把握が可能です。例えば、`ProcessSample`に添付されたデータが何か確認するには、次のNRQLクエリをします:
+[インフラストラクチャデータをクエリ](/docs/using-new-relic/data/understand-data/query-new-relic-data)することで、問題のトラブルシューティング、チャートの作成、または使用できるデータを把握できます。たとえば、`ProcessSample`に添付されたデータが何か確認するには、このNRQLクエリを実行します。
 
 ```
 SELECT * FROM ProcessSample
 ```
 
-[次元メトリックを使用してインフラストラクチャをクエリする](/docs/query-your-data/nrql-new-relic-query-language/nrql-query-tutorials/query-infrastructure-dimensional-metrics-nrql)こともできます。
+[次元メトリックを使用してインフラストラクチャをクエリ](/docs/query-your-data/nrql-new-relic-query-language/nrql-query-tutorials/query-infrastructure-dimensional-metrics-nrql)することもできます。
 
-## データを管理 [#manage-data]
+## データを管理
 
-データの取り込みの管理とレポート作成のヒントについては、[インフラストラクチャデータの管理](/docs/infrastructure/install-infrastructure-agent/manage-your-agent/manage-infrastructure-data-reporting)をご覧ください。
+データの取り込みの管理とレポート作成のヒントについては、[インフラストラクチャデータの管理](/docs/infrastructure/install-infrastructure-agent/manage-your-agent/manage-infrastructure-data-reporting)を参照してください。
 
-## カスタム属性を追加する [#custom-attributes]
+## カスタムアトリビュートを追加する [#custom-attributes]
 
-New Relic YAMLファイルで、インフラストラクチャの[カスタムアトリビュート](/docs/meatballs-configuring-your-agent#attributes)を作成できます。このメタデータを使用して、次のことを行います：
+インフラストラクチャエージェントのYAMLファイルに[カスタムアトリビュート](/docs/meatballs-configuring-your-agent#attributes)を作成できます。このメタデータを使用して、次のことを行います。
 
-* Infrastructure[フィルタセット](/docs/infrastructure/new-relic-infrastructure/filter-group/organize-infrastructure-hosts-filter-sets)を作成する
-* [**グループ別**](/docs/infrastructure/new-relic-infrastructure/filter-group/group-infrastructure-results-specific-attributes)メニューを投入する
-* Infrastructureデータに注釈をつける
+* インフラストラクチャ[フィルタセット](/docs/infrastructure/new-relic-infrastructure/filter-group/organize-infrastructure-hosts-filter-sets)を作成
+* [**グループ別**](/docs/infrastructure/new-relic-infrastructure/filter-group/group-infrastructure-results-specific-attributes)メニューを入力
+* インフラストラクチャデータに注釈を付ける
 
 ## 一般的なAmazon EC2属性 [#shared-attributes]
 
-[Amazon Elastic Compute Cloud（EC2）アカウントをインフラストラクチャモニタリングに接続](/docs/infrastructure/new-relic-infrastructure/data-instrumentation/amazon-aws-ec2-integration-infrastructure)すると、当社は[Amazon EC2インスタンス](/docs/infrastructure/infrastructure-integrations/amazon-integrations/aws-ec2-integration)からデータを報告します。Amazon EC2関連の属性は、あらゆるイベントで使用可能な一般的な属性です。この属性は、EC2 APIから引き出されます。CloudWatch情報は収集されません。
+[Amazon Elastic Compute Cloud（EC2）アカウントをインフラストラクチャモニタリングに接続](/docs/infrastructure/new-relic-infrastructure/data-instrumentation/amazon-aws-ec2-integration-infrastructure)すると、当社は[Amazon EC2インスタンス](/docs/infrastructure/infrastructure-integrations/amazon-integrations/aws-ec2-integration)からデータを報告します。Amazon EC2関連の属性は、あらゆるイベントで使用できる一般的な属性です。これらの属性は、EC2 APIから引き出されます。CloudWatch情報は収集されません。
 
-これらの属性と属性の値は、Amazonが公開するデータを変更すると、変更される場合があります。
+これらの属性と属性値は、Amazonが公開するデータを変更すると変更されます。
 
 <CollapserGroup>
+  <Collapser
+    id="aws-account-id"
+    title={<InlineCode>awsAccountId</InlineCode>}
+  >
+    AWSアカウントID（Amazon Web Servicesが決定）。
+  </Collapser>
+
   <Collapser
     id="aws-region"
     title={<InlineCode>awsRegion</InlineCode>}
   >
-    AWSサーバーが存在する地域（Amazon Web Servicesが決定）。この属性は、New Relicを使用してAmazon EC2サーバーを監視する顧客についてのみ存在します。
+    AWSサーバーが存在する地域（Amazon Web Servicesが決定）。
   </Collapser>
 
   <Collapser
     id="aws-availability-zone"
     title={<InlineCode>awsAvailabilityZone</InlineCode>}
   >
-    AWSサーバーが存在する可用性ゾーン（Amazon Web Servicesが決定）。この属性は、New Relicを使用してAmazon EC2サーバーを監視する顧客についてのみ存在します。
+    AWSサーバーが存在する可用性ゾーン（Amazon Web Servicesが決定）。
   </Collapser>
 
   <Collapser
     id="ec2-instance-type"
     title={<InlineCode>ec2InstanceType</InlineCode>}
   >
-    AWS固有のコードで表示される、Amazon Web Servicesのインスタンスタイプ。この属性は、New Relicを使用してAmazon EC2サーバーを監視する顧客についてのみ存在します。
+    AWS固有のコードで表示される、Amazon Web Servicesのインスタンスタイプ。
   </Collapser>
 
   <Collapser
     id="ec2-instance-id"
     title={<InlineCode>ec2InstanceId</InlineCode>}
   >
-    Amazon Web Servicesインスタンスの、サーバーの一意の識別番号。この属性は、New Relicを使用してAmazon EC2サーバーを監視する顧客についてのみ存在します。
+    Amazon Web Servicesインスタンスの、サーバーの一意の識別番号。
   </Collapser>
 
   <Collapser
     id="ec2-ami-id"
     title={<InlineCode>ec2AmiId</InlineCode>}
   >
-    Amazon EC2インスタンスのブートストラップにAmazon Web Servicesが使用する画像の、Amazon Machine Image（AMI）識別番号。この属性は、New Relicを使用してAmazon EC2サーバーを監視する顧客についてのみ存在します。
+    Amazon EC2インスタンスのブートストラップにAmazon Web Servicesが使用する画像の、Amazon Machine Image（AMI）識別番号。
   </Collapser>
 
   <Collapser
     id="ec2-subnet-id"
     title={<InlineCode>ec2SubnetId</InlineCode>}
   >
-    サーバーが接続されるネットワーキングサブネットの識別子。この属性は、New Relicを使用してAmazon EC2サーバーを監視する顧客についてのみ存在します。
+    サーバーが接続されるネットワーキングサブネットの識別子。
   </Collapser>
 
   <Collapser
     id="ec2-vpc-id"
     title={<InlineCode>ec2VpcId</InlineCode>}
   >
-    このサーバーの仮想プライベートクラウドの識別子（ある場合）。この属性は、New Relicを使用してAmazon EC2サーバーを監視する顧客についてのみ存在します。
+    このサーバーの仮想プライベートクラウドの識別子（ある場合）。
   </Collapser>
 
   <Collapser
     id="ec2-general"
-    title="その他のAmazon EC2の属性"
+    title="その他のAmazon EC2属性"
   >
-    Amazon Web Servicesが、New Relic向けに公開しているメタデータを変更した場合、収集されたその他の属性と値も利用できます。
+    Amazon Webサービスが、New Relic向けに公開しているメタデータを変更した場合、収集されたその他の属性と値も使用できます。
   </Collapser>
 </CollapserGroup>
 
-## その他のヘルプ [#more_help]
+これらの属性のサブセットは、EC2インスタンスにインストールされたときにInfrastructureエージェントから収集されます。
 
-さらに支援が必要な場合は、これらのサポートと学習リソースを確認してください：
-
-* [Explorers Hub](https://discuss.newrelic.com/)を参照して、コミュニティから支援を受け、ディスカッションに参加してください。
-* [当社のサイトで回答を見つけ、サポートポータルの使用方法について学びます](/docs/using-new-relic/welcome-new-relic/get-started/find-help-use-support-portal)。
-* Linux、Windows、およびmacOSのトラブルシューティングツールである[New Relic Diagnosticsを実行します](/docs/using-new-relic/cross-product-functions/troubleshooting/new-relic-diagnostics)。
-* New Relicの[データセキュリティ](/docs/security)と[ライセンス](/docs/licenses)ドキュメントを見直してください。
+* awsAccountId
+* awsRegion
+* awsAvailabilityZone
+* ec2AmiId
+* ec2InstanceType

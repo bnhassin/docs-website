@@ -1,11 +1,8 @@
-const fs = require('fs');
 const path = require('path');
 const { prop } = require('./scripts/utils/functional.js');
 const externalRedirects = require('./src/data/external-redirects.json');
-
 const { createFilePath } = require('gatsby-source-filesystem');
 
-const SWIFTYPE_RESOURCES_DIR = 'src/data/swiftype-resources';
 const TEMPLATE_DIR = 'src/templates/';
 const TRAILING_SLASH = /\/$/;
 
@@ -18,24 +15,19 @@ const hasTrailingSlash = (pathname) =>
 const appendTrailingSlash = (pathname) =>
   pathname.endsWith('/') ? pathname : `${pathname}/`;
 
-// before we build, combine related resource files into one
-exports.onPreBootstrap = () => {
-  const files = fs.readdirSync(SWIFTYPE_RESOURCES_DIR);
-  const content = files.map((filename) => {
-    return fs.readFileSync(path.join(SWIFTYPE_RESOURCES_DIR, filename), {
-      encoding: 'utf8',
-    });
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      fallback: {
+        http: false,
+        https: false,
+        zlib: false,
+      },
+      alias: {
+        images: path.resolve(__dirname, 'src/images/'),
+      },
+    },
   });
-  const json = content.reduce(
-    (acc, fileContent) => ({ ...acc, ...JSON.parse(fileContent) }),
-    {}
-  );
-
-  fs.writeFileSync(
-    path.join(process.cwd(), '/src/data/swiftype-resources.json'),
-    JSON.stringify(json, null, 2),
-    'utf8'
-  );
 };
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -113,6 +105,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
             frontmatter {
               type
               subject
+              translationType
             }
           }
         }
@@ -253,11 +246,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           i18nNode.fields.slug.replace(`/${locale}`, '') === node.fields.slug
       );
 
-      createPageFromNode(i18nNode || node, {
-        prefix: i18nNode ? '' : locale,
-        createPage,
-        disableSwiftype: !i18nNode,
-      });
+      createPageFromNode(
+        i18nNode || node,
+        {
+          prefix: i18nNode ? '' : locale,
+          createPage,
+          disableSwiftype: !i18nNode,
+        },
+        true // enable DSG
+      );
     });
   });
 
@@ -288,6 +285,17 @@ exports.createSchemaCustomization = ({ actions }) => {
     pages: [NavYaml!]!
     rootNav: Boolean!
   }
+  type MarkdownRemark implements Node {
+    frontmatter: Frontmatter
+  }
+  type Mdx implements Node {
+    frontmatter: Frontmatter
+  }
+  type Frontmatter {
+    isFeatured: Boolean
+    translationType: String
+    dataSource: String
+  }
   `;
 
   createTypes(typeDefs);
@@ -307,7 +315,23 @@ exports.createResolvers = ({ createResolvers }) => {
       },
       rootNav: {
         resolve: (source) =>
-          hasOwnProperty(source, 'rootNav') ? source.rootNav : true,
+          hasOwnProperty(source, 'rootNav') ? source.rootNav : false,
+      },
+    },
+    Frontmatter: {
+      isFeatured: {
+        resolve: (source) =>
+          hasOwnProperty(source, 'isFeatured') ? source.isFeatured : false,
+      },
+      translationType: {
+        resolve: (source) =>
+          hasOwnProperty(source, 'translationType')
+            ? source.translationType
+            : null,
+      },
+      dataSource: {
+        resolve: (source) =>
+          hasOwnProperty(source, 'dataSource') ? source.dataSource : null,
       },
     },
   });
@@ -375,7 +399,8 @@ const createLocalizedRedirect = ({
 
 const createPageFromNode = (
   node,
-  { createPage, prefix = '', disableSwiftype = false }
+  { createPage, prefix = '', disableSwiftype = false },
+  defer = false
 ) => {
   const {
     fields: { fileRelativePath, slug },
@@ -404,6 +429,7 @@ const createPageFromNode = (
         slugRegex: `${slug}/.+/`,
         disableSwiftype,
       },
+      defer,
     });
   }
 };
@@ -413,7 +439,6 @@ const TEMPLATES_BY_TYPE = {
   apiDoc: 'docPage',
   releaseNote: 'releaseNote',
   troubleshooting: 'docPage',
-  apiLandingPage: 'apiLandingPage',
 };
 
 const getTemplate = (node) => {

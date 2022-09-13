@@ -5,114 +5,80 @@ tags:
   - Install the infrastructure agent
   - Linux installation
 metaDescription: Instructions for how to install New Relic Infrastructure for Linux systems using a package manager.
+translationType: 'human'
 ---
 
-import amazonlinux from './images/amazonlinux.png'
+import ansibleRedLogo from 'images/ansible-red-logo.png'
 
-import centos from './images/centos.png'
+import chefLogo from 'images/chef-logo.png'
 
-import dockerLogoCrop from './images/docker-logo-crop.png'
+import ebs from 'images/ebs.png'
 
-import suse from './images/suse.png'
+import puppetLogo from 'images/puppet-logo.png'
 
-import ubuntu from './images/ubuntu.png'
+import amazonlinux from 'images/amazonlinux.png'
 
-import otherlinux from './images/otherlinux.png'
+import centos from 'images/centos.png'
 
-import suseIcon from './images/suse-icon.png'
+import dockerLogoCrop from 'images/docker-logo-crop.png'
 
-import redHatNew2 from './images/red-hat-new2.png'
+import suse from 'images/suse.png'
 
-import centosIcon from './images/centos-icon.png'
+import ubuntu from 'images/ubuntu.png'
 
-import amazonLinux from './images/amazon-linux.png'
+import otherlinux from 'images/otherlinux.png'
 
-import ubuntuIcon from './images/ubuntu-icon.png'
+import suseIcon from 'images/suse-icon.png'
 
-import debian from './images/Debian.png'
+import redHatNew2 from 'images/red-hat-new2.png'
 
-Linux用Infrastructureモニタリングエージェントは、いくつかのパッケージマネージャを使用してインストールできます。当社のランチャーを使用するか、本ドキュメントの説明に従って、基本的なインストレーションを実行できます。
+import centosIcon from 'images/centos-icon.png'
 
-<Callout variant="tip">
-  Infrastructureモニタリング、およびその他の[オブザーバビリティプラットフォーム](https://one.newrelic.com)を使用するには、New Relicファミリーに参加してください。[サインアップ](https://newrelic.com/signup)して、わずか数秒で無料アカウントを作成できます。次に、毎月最大100GBのデータを無料で取り込みます。期間無制限です。
-</Callout>
+import amazonLinux from 'images/amazon-linux.png'
 
-## クイックスタート [#quick]
+import ubuntuIcon from 'images/ubuntu-icon.png'
 
-Infrastructureモニタリングエージェントを最も迅速に使い始めるには、ガイド付きインストールを使用します。
+import debian from 'images/Debian.png'
 
-<Callout variant="tip">
-  [ガイド付きインストール](https://one.newrelic.com/launcher/nr1-core.home?pane=eyJuZXJkbGV0SWQiOiJucjEtY29yZS5ob21lLXNjcmVlbiJ9&cards%5B0%5D=eyJuZXJkbGV0SWQiOiJucjEtaW5zdGFsbC1uZXdyZWxpYy5ucjEtaW5zdGFsbC1uZXdyZWxpYyIsImFjdGlvbkluZGV4IjoxfQ==)をお試しください。（EUでホストされている場合は、[EUガイド付きインストール](https://one.eu.newrelic.com/launcher/nr1-core.home?pane=eyJuZXJkbGV0SWQiOiJucjEtY29yZS5ob21lLXNjcmVlbiJ9&cards%5B0%5D=eyJuZXJkbGV0SWQiOiJucjEtaW5zdGFsbC1uZXdyZWxpYy5ucjEtaW5zdGFsbC1uZXdyZWxpYyIsImFjdGlvbkluZGV4IjoxfQ==)を使用します。）
-</Callout>
+[Infrastructureモニタリングエージェント](/docs/infrastructure/infrastructure-monitoring/get-started/get-started-infrastructure-monitoring/)の使用を開始する際に最も迅速な方法では、[ガイド付きインストール](/docs/new-relic-one/use-new-relic-one/cross-product-functions/install-configure/new-relic-guided-install-overview/)を使用します。EUにお住まいの場合は、EUガイド付きインストールをお試しください。いずれにしても、アカウントをお持ちでない場合は、New Relicアカウントが必要です。永久に[無料で作成](https://newrelic.com/signup)できます。
 
-## ランチャーを使用してインストールする [#install-agent]
+<ButtonGroup>
+  <ButtonLink
+    data-tessen="stitchedPathLinkClick"
+    role="button"
+    to="https://newrelic.com/signup"
+    variant="primary"
+  >
+    アカウントの取得
+  </ButtonLink>
 
-Linux用のモニタリングエージェントのインストール前に、以下のことを確認してください。
+  <ButtonLink
+    role="button"
+    to="https://one.newrelic.com/launcher/nr1-core.home?pane=eyJuZXJkbGV0SWQiOiJucjEtY29yZS5ob21lLXNjcmVlbiJ9&cards%5B0%5D=eyJuZXJkbGV0SWQiOiJucjEtaW5zdGFsbC1uZXdyZWxpYy5ucjEtaW5zdGFsbC1uZXdyZWxpYyIsImFjdGlvbkluZGV4IjoxfQ=="
+    variant="primary"
+  >
+    ガイド付きインストール
+  </ButtonLink>
+
+  <ButtonLink
+    role="button"
+    to="https://one.eu.newrelic.com/launcher/nr1-core.home?pane=eyJuZXJkbGV0SWQiOiJucjEtY29yZS5ob21lLXNjcmVlbiJ9&cards%5B0%5D=eyJuZXJkbGV0SWQiOiJucjEtaW5zdGFsbC1uZXdyZWxpYy5ucjEtaW5zdGFsbC1uZXdyZWxpYyIsImFjdGlvbkluZGV4IjoxfQ=="
+    variant="primary"
+  >
+    EUガイド付きインストール
+  </ButtonLink>
+</ButtonGroup>
+
+## ステップごとの説明 [#manual-install]
+
+ガイド付きインストールが機能しない場合は、エージェントを手動でインストールできます。Infrastructureをインストールする前に、次の点を確認してください。
 
 * [要件](/docs/infrastructure/new-relic-infrastructure/getting-started/compatibility-requirements-new-relic-infrastructure)を見直します。
 * 有効な[New Relicライセンスキー](/docs/accounts/install-new-relic/account-setup/license-key)がある。
 
-Infrastructureモニタリングエージェントをインストールするには、お使いのLinuxディストリビューションのボタンをクリックしてから、指示に従います。
+InfrastructureをLinuxでインストールするには、次の指示に従ってください。
 
-<TechTileGrid>
-  <TechTile
-    name="Amazon Linux"
-    to="https://one.newrelic.com/launcher/nr1-core.settings?pane=eyJuZXJkbGV0SWQiOiJzZXR1cC1uZXJkbGV0LnNldHVwLW9zIiwiZGF0YVNvdXJjZSI6IkFNQVpPTl9MSU5VWCJ9"
-    icon={<img src={amazonlinux} alt="Amazon Linux"/>}
-  />
-
-  <TechTile
-    name="CentOS"
-    to="https://one.newrelic.com/launcher/nr1-core.settings?pane=eyJuZXJkbGV0SWQiOiJzZXR1cC1uZXJkbGV0LnNldHVwLW9zIiwiZGF0YVNvdXJjZSI6IkNFTlRPUyJ9"
-    icon={<img src={centos} alt="CentOS"/>}
-  />
-
-  <TechTile
-    name="Container (Docker)"
-    to="/docs/infrastructure/new-relic-infrastructure/data-instrumentation/monitor-containers-underlying-hosts-coreos"
-    icon={<img src={dockerLogoCrop} alt="Docker"/>}
-  />
-
-  <TechTile
-    name="Debian"
-    to="https://one.newrelic.com/launcher/nr1-core.settings?pane=eyJuZXJkbGV0SWQiOiJzZXR1cC1uZXJkbGV0LnNldHVwLW9zIiwiZGF0YVNvdXJjZSI6IkRFQklBTiJ9"
-    icon={<img src={debian} alt="Debian"/>}
-  />
-
-  <TechTile
-    name="RHEL"
-    to="https://one.newrelic.com/launcher/nr1-core.settings?pane=eyJuZXJkbGV0SWQiOiJzZXR1cC1uZXJkbGV0LnNldHVwLW9zIiwiZGF0YVNvdXJjZSI6IlJIRUwifQ=="
-    icon={<img src={redHatNew2} alt="Red Hat"/>}
-  />
-
-  <TechTile
-    name="SLES"
-    to="https://one.newrelic.com/launcher/nr1-core.settings?pane=eyJuZXJkbGV0SWQiOiJzZXR1cC1uZXJkbGV0LnNldHVwLW9zIiwiZGF0YVNvdXJjZSI6IlNMRVMifQ=="
-    icon={<img src={suse} alt="SLES"/>}
-  />
-
-  <TechTile
-    name="Ubuntu"
-    to="https://one.newrelic.com/launcher/nr1-core.settings?pane=eyJuZXJkbGV0SWQiOiJzZXR1cC1uZXJkbGV0LnNldHVwLW9zIiwiZGF0YVNvdXJjZSI6IlVCVU5UVSJ9"
-    icon={<img src={ubuntu} alt="Ubuntu"/>}
-  />
-
-  <TechTile
-    name="Other Linux distros"
-    to="/docs/infrastructure/install-configure-manage-infrastructure/linux-installation/tarball-assisted-install-infrastructure-linux"
-    icon={<img src={otherlinux} alt="Other Linux OS"/>}
-  />
-</TechTileGrid>
-
-上記のリンクを使用するには、New Relicアカウントにログインする必要があります。
-
-まだNew Relicアカウントがない、または手動の手順に従いたい場合は、次のセクションの[ステップごとのチュートリアル](#manual-install)をご覧ください。
-
-## ステップごとの説明 [#manual-install]
-
-InfrastructureモニタリングエージェントをLinuxでインストールするには：
-
-1. 設定ファイルを作成し、[ライセンスキー](/docs/accounts-partnerships/accounts/account-setup/license-key)を追加します：
+1. 設定ファイルを作成し、[ライセンスキー](/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key)を追加します：
 
    ```
    echo "license_key: <var>YOUR_LICENSE_KEY</var>" | sudo tee -a /etc/newrelic-infra.yml
@@ -195,7 +161,7 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
        ```
 
        <Callout variant="important">
-         zypperパッケージマネージャには、GPGキーが予期したとおりに検証されない可能性があるという既知の問題があります。`署名の検証の失敗`などのエラーが発生した場合は、New Relicの[Explorers Hub](https://discuss.newrelic.com/t/new-relic-infrastructure-installation/121241/3)で詳細をご覧ください。
+         zypperパッケージマネージャには、GPGキーが予期したとおりに検証されない可能性があるという既知の問題があります。`Signature verification failed`などのエラーが発生した場合は、New Relicの[エクスプローラーハブ](https://discuss.newrelic.com/t/new-relic-infrastructure-installation/121241/3)で詳細をご覧ください。
        </Callout>
      </Collapser>
    </CollapserGroup>
@@ -224,40 +190,52 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
        ```
        printf "deb https://download.newrelic.com/infrastructure_agent/linux/apt buster main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
        ```
+
+       **Debian 11（「Bullseye」）**
+
+       ```
+       printf "deb https://download.newrelic.com/infrastructure_agent/linux/apt bullseye main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
+       ```
      </Collapser>
 
      <Collapser
        id="ubuntu-repository"
        title={<><img src={ubuntuIcon} title="ubuntu icon" alt="ubuntu icon" style={{ height: '32px', width: '32px', verticalAlign: 'middle' }}/>Ubuntu</>}
      >
-       **Ubuntu 12（「Precise」）**
-
-       ```
-       printf "deb https://download.newrelic.com/infrastructure_agent/linux/apt precise main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
-       ```
-
-       **Ubuntu 14（「Trusty」）**
-
-       ```
-       printf "deb https://download.newrelic.com/infrastructure_agent/linux/apt trusty main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
-       ```
-
-       **Ubuntu 16（「Xenial」）**
+       **Ubuntu 16.04 LTS（Xenial Xerus）**
 
        ```
        printf "deb https://download.newrelic.com/infrastructure_agent/linux/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
        ```
 
-       **Ubuntu 18（「Bionic」）**
+       **Ubuntu 18.04 LTS（Bionic Beaver）**
 
        ```
        printf "deb https://download.newrelic.com/infrastructure_agent/linux/apt bionic main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
        ```
 
-       **Ubuntu 20（「Focal」）**
+       **Ubuntu 20.04 LTS（Focal Fossa）**
 
        ```
        printf "deb https://download.newrelic.com/infrastructure_agent/linux/apt focal main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
+       ```
+
+       **Ubuntu 20.10（Groovy Gorilla）**
+
+       ```
+       printf "deb https://download.newrelic.com/infrastructure_agent/linux/apt groovy main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
+       ```
+
+       **Ubuntu 21.04（Hirsute Hippo）**
+
+       ```
+       printf "deb https://download.newrelic.com/infrastructure_agent/linux/apt hirsute main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
+       ```
+
+       **Ubuntu 22.04（Jammy Jellyfish）**
+
+       ```
+       printf "deb https://download.newrelic.com/infrastructure_agent/linux/apt jammy main" | sudo tee -a /etc/apt/sources.list.d/newrelic-infra.list
        ```
      </Collapser>
 
@@ -280,30 +258,42 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
 
      <Collapser
        id="centos-rhel-repository"
-       title={<><img src={centosIcon} title="centos icon" alt="centos icon" style={{ height: '32px', width: '32px', verticalAlign: 'middle' }}/>CentOS、<img src={redHatNew2} title="redhat icon" alt="redhat icon" style={{ height: '32px', width: '32px', verticalAlign: 'middle' }}/>RHEL</>}
+       title={<><img src={centosIcon} title="centos icon" alt="centos icon" style={{ height: '32px', width: '32px', verticalAlign: 'middle' }}/>CentOS、<img src={redHatNew2} title="redhat icon" alt="redhat icon" style={{ height: '32px', width: '32px', verticalAlign: 'middle' }}/>RHELとOracle Linux</>}
      >
-       **CentOS 7.x、RHEL 7.x（x86）**
+       **CentOS、RHEL、Oracle Linux 7.x（x86）**
 
        ```
        sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/yum/el/7/x86_64/newrelic-infra.repo
        ```
 
-       **CentOS 7.x、RHEL 7.x（arm64）**
+       **CentOS RHEL、Oracle Linux 7.x（arm64）**
 
        ```
        sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/yum/el/7/aarch64/newrelic-infra.repo
        ```
 
-       **CentOS 8.x、RHEL 8.x（x86）**
+       **CentOS、RHEL、Oracle Linux 8.x（x86）**
 
        ```
        sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/yum/el/8/x86_64/newrelic-infra.repo
        ```
 
-       **CentOS 8.x、RHEL 8.x（arm64）**
+       **CentOS、RHEL、Oracle Linux 8.x（arm64）**
 
        ```
        sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/yum/el/8/aarch64/newrelic-infra.repo
+       ```
+
+       **RHEL 9.x (x86)**
+
+       ```
+       sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/yum/el/9/x86_64/newrelic-infra.repo
+       ```
+
+       **RHEL 9.x (arm64)**
+
+       ```
+       sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/yum/el/9/aarch64/newrelic-infra.repo
        ```
      </Collapser>
 
@@ -311,6 +301,7 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
        id="amazon-linux-repository"
        title={<><img src={suseIcon} title="suse icon" alt="suse icon" style={{ height: '32px', width: '32px', verticalAlign: 'middle' }}/>SLES</>}
      >
+
        **SLES 12.1（x86）**
 
        ```
@@ -357,6 +348,54 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
 
        ```
        sudo curl -o /etc/zypp/repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/zypp/sles/12.4/aarch64/newrelic-infra.repo
+       ```
+
+       **SLES 12.5（x86）**
+
+       ```
+       sudo curl -o /etc/zypp/repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/zypp/sles/12.5/x86_64/newrelic-infra.repo
+       ```
+
+       **SLES 12.5（ARM）**
+
+       ```
+       sudo curl -o /etc/zypp/repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/zypp/sles/12.5/aarch64/newrelic-infra.repo
+       ```
+
+       **SLES 15.1（x86）**
+
+       ```
+       sudo curl -o /etc/zypp/repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/zypp/sles/15.1/x86_64/newrelic-infra.repo
+       ```
+
+       **SLES 15.1（ARM）**
+
+       ```
+       sudo curl -o /etc/zypp/repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/zypp/sles/15.1/aarch64/newrelic-infra.repo
+       ```
+
+       **SLES 15.2（x86）**
+
+       ```
+       sudo curl -o /etc/zypp/repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/zypp/sles/15.2/x86_64/newrelic-infra.repo
+       ```
+
+       **SLES 15.2（ARM）**
+
+       ```
+       sudo curl -o /etc/zypp/repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/zypp/sles/15.2/aarch64/newrelic-infra.repo
+       ```
+
+       **SLES 15.3（x86）**
+
+       ```
+       sudo curl -o /etc/zypp/repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/zypp/sles/15.3/x86_64/newrelic-infra.repo
+       ```
+
+       **SLES 15.3（ARM）**
+
+       ```
+       sudo curl -o /etc/zypp/repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/zypp/sles/15.3/aarch64/newrelic-infra.repo
        ```
      </Collapser>
    </CollapserGroup>
@@ -408,19 +447,25 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
        id="install-root"
        title="ルート（デフォルト）"
      >
-       * **<ImageSizing width="32px" height="32px" verticalAlign="middle">![Debian.png](./images/Debian.png "Debian.png")</ImageSizing> Debianおよび<ImageSizing width="32px" height="32px" verticalAlign="middle">![ubuntu アイコン](./images/ubuntu-icon.png "ubuntu アイコン")</ImageSizing> Ubuntu**：
+       * **<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Debian.png" alt="Debian.png" src={debian}/>**
+
+         **Debianおよび<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="ubuntu icon" alt="ubuntu icon" src={ubuntuIcon}/>Ubuntu**）
 
          ```
          sudo apt-get install newrelic-infra -y
          ```
 
-       * **<ImageSizing width="32px" height="32px" verticalAlign="middle">![amazon linux.png](./images/amazon-linux.png "amazon linux.png")</ImageSizing> Amazon Linux、<ImageSizing width="32px" height="32px" verticalAlign="middle">![centosアイコン](./images/centos-icon.png "centosアイコン")</ImageSizing>CentOS、<ImageSizing width="32px" height="32px" verticalAlign="middle">![redhat アイコン](./images/red-hat-new2.png "redhat アイコン")</ImageSizing> RHEL**：
+       * **<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="amazon linux.png" alt="amazon linux.png" src={amazonLinux}/>**
+
+         **Amazon Linux、<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="centos icon" alt="centos icon" src={centosIcon}/>CentOS、<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="redhat icon" alt="redhat icon" src={redHatNew2}/>RHEL**）
 
          ```
          sudo yum install newrelic-infra -y
          ```
 
-       * **<ImageSizing width="32px" height="32px" verticalAlign="middle">![suse アイコン](./images/suse-icon.png "suse アイコン")</ImageSizing> SLES**:
+       * **<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="suse icon" alt="suse icon" src={suseIcon}/>**
+
+         **SLES**:
 
          ```
          sudo zypper -n install newrelic-infra
@@ -433,7 +478,9 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
      >
        libcapライブラリをインストールし、`NRIA_MODE`環境変数を`PRIVILEGED`に設定します。
 
-       * **<ImageSizing width="32px" height="32px" verticalAlign="middle">![Debian.png](./images/Debian.png "Debian.png")</ImageSizing> Debianおよび<ImageSizing width="32px" height="32px" verticalAlign="middle">![ubuntu アイコン](./images/ubuntu-icon.png "ubuntu アイコン")</ImageSizing> Ubuntu**：
+       * **<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Debian.png" alt="Debian.png" src={debian}/>**
+
+         **Debianおよび<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="ubuntu icon" alt="ubuntu icon" src={ubuntuIcon}/>Ubuntu**）
 
          ```
          sudo apt-get install libcap2-bin
@@ -443,7 +490,9 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
          sudo NRIA_MODE="PRIVILEGED" apt-get install newrelic-infra
          ```
 
-       * **<ImageSizing width="32px" height="32px" verticalAlign="middle">![amazon linux.png](./images/amazon-linux.png "amazon linux.png")</ImageSizing> Amazon Linux、<ImageSizing width="32px" height="32px" verticalAlign="middle">![centosアイコン](./images/centos-icon.png "centosアイコン")</ImageSizing>CentOS、<ImageSizing width="32px" height="32px" verticalAlign="middle">![redhat アイコン](./images/red-hat-new2.png "redhat アイコン")</ImageSizing> RHEL**：
+       * **<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="amazon linux.png" alt="amazon linux.png" src={amazonLinux}/>**
+
+         **Amazon Linux、<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="centos icon" alt="centos icon" src={centosIcon}/>CentOS、<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="redhat icon" alt="redhat icon" src={redHatNew2}/>RHEL**）
 
          ```
          sudo yum install libcap
@@ -453,7 +502,9 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
          sudo NRIA_MODE="PRIVILEGED" yum install newrelic-infra
          ```
 
-       * **<ImageSizing width="32px" height="32px" verticalAlign="middle">![suse アイコン](./images/suse-icon.png "suse アイコン")</ImageSizing> SLES**:
+       * **<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="suse icon" alt="suse icon" src={suseIcon}/>**
+
+         **SLES**:
 
          ```
          sudo zypper install libcap-progs
@@ -470,7 +521,9 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
      >
        libcapライブラリをインストールし、`NRIA_MODE`環境変数を`UNPRIVILEGED`に設定します。
 
-       * **<ImageSizing width="32px" height="32px" verticalAlign="middle">![Debian.png](./images/Debian.png "Debian.png")</ImageSizing> Debianおよび<ImageSizing width="32px" height="32px" verticalAlign="middle">![ubuntu アイコン](./images/ubuntu-icon.png "ubuntu アイコン")</ImageSizing> Ubuntu**：
+       * **<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Debian.png" alt="Debian.png" src={debian}/>**
+
+         **Debianおよび<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="ubuntu icon" alt="ubuntu icon" src={ubuntuIcon}/>Ubuntu**）
 
          ```
          sudo apt-get install libcap2-bin
@@ -480,7 +533,9 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
          sudo NRIA_MODE="UNPRIVILEGED" apt-get install newrelic-infra
          ```
 
-       * **<ImageSizing width="32px" height="32px" verticalAlign="middle">![amazon linux.png](./images/amazon-linux.png "amazon linux.png")</ImageSizing> Amazon Linux、<ImageSizing width="32px" height="32px" verticalAlign="middle">![centosアイコン](./images/centos-icon.png "centosアイコン")</ImageSizing>CentOS、<ImageSizing width="32px" height="32px" verticalAlign="middle">![redhat アイコン](./images/red-hat-new2.png "redhat アイコン")</ImageSizing> RHEL**：
+       * **<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="amazon linux.png" alt="amazon linux.png" src={amazonLinux}/>**
+
+         **Amazon Linux、<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="centos icon" alt="centos icon" src={centosIcon}/>CentOS、<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="redhat icon" alt="redhat icon" src={redHatNew2}/>RHEL**）
 
          ```
          sudo yum install libcap
@@ -490,7 +545,9 @@ InfrastructureモニタリングエージェントをLinuxでインストール�
          sudo NRIA_MODE="UNPRIVILEGED" yum install newrelic-infra
          ```
 
-       * **<ImageSizing width="32px" height="32px" verticalAlign="middle">![suse アイコン](./images/suse-icon.png "suse アイコン")</ImageSizing> SLES**:
+       * **<img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="suse icon" alt="suse icon" src={suseIcon}/>**
+
+         **SLES**:
 
          ```
          sudo zypper install libcap-progs
@@ -512,23 +569,23 @@ Infrastructureモニタリングエージェントをインストールまたは
 
 設定管理ツールを使ってInfrastructureモニタリングエージェントをインストールするには、以下に関するドキュメントをご覧ください。
 
-* <ImageSizing width="32px" height="32px" verticalAlign="middle">![Ansible](./images/ansible-red-logo.png "Ansible")</ImageSizing>
+* <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Ansible" alt="Ansible" src={ansibleRedLogo}/>
 
   [Ansible](/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-ansible)
 
-* <ImageSizing width="32px" height="32px" verticalAlign="middle">![Chef](./images/chef-logo.png "Chef")</ImageSizing>
+* <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Chef" alt="Chef" src={chefLogo}/>
 
   [Chef](/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-using-chef)
 
-* <ImageSizing width="32px" height="28px" verticalAlign="middle">![Docker](./images/docker-logo-crop.png "Docker")</ImageSizing>
+* <img style={{ width: '32px', height: '28px', verticalAlign: 'middle'}} class="inline" title="Docker" alt="Docker" src={dockerLogoCrop}/>
 
   [Docker](/docs/infrastructure/install-infrastructure-agent/linux-installation/docker-container-infrastructure-monitoring)（コンテナとしてインストール）
 
-* <ImageSizing width="32px" height="32px" verticalAlign="middle">![EBS](./images/ebs.png "EBS")</ImageSizing>
+* <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="EBS" alt="EBS" src={ebs}/>
 
   [Elastic Beanstalk](/docs/infrastructure/install-infrastructure-agent/config-management-tools/install-infrastructure-agent-aws-elastic-beanstalk)
 
-* <ImageSizing width="32px" height="32px" verticalAlign="middle">![Puppet](./images/puppet-logo.png "Puppet")</ImageSizing>
+* <img style={{ width: '32px', height: '32px', verticalAlign: 'middle'}} class="inline" title="Puppet" alt="Puppet" src={puppetLogo}/>
 
   [Puppet](/docs/infrastructure/new-relic-infrastructure/config-management-tools/configure-new-relic-infrastructure-puppet)
 
@@ -547,7 +604,7 @@ Infrastructureモニタリングエージェントをインストールまたは
 これは、環境にデフォルトのインストレーション設定を適用する場合、またはリポジトリに`newrelic-infra`パッケージがないディストリビューションにInfrastructureモニタリングエージェントをインストールする必要がある場合に特に有用です。
 
 <Callout variant="important">
-  tarballファイルを使用してのエージェントのインストールは、正式には[AWS Graviton 2プロセッサ](https://aws.amazon.com/ec2/graviton/)についてのみサポートされています。
+  tarballファイルを使用したInfrastructureエージェントのカスタムインストールは、正式にはサポートされていません。
 </Callout>
 
 ## エージェントの更新 [#update]
@@ -568,7 +625,7 @@ sudo -E <var>YOUR_PACKAGE_MANAGER_UPDATE_COMMAND</var>
 
 ## 次のステップ [#what-next]
 
-トラフィックが生成されてから数分待ってから、[New Relic One UIでホストを確認](/docs/infrastructure-metrics)します。[データが表示されない](/docs/infrastructure/new-relic-infrastructure/troubleshooting/no-data-appears-infrastructure)場合、必要に応じてトラブルシューティングプロセスに従ってください。
+トラフィックが生成されてから数分待ってから、[New Relic UIでホストを確認](/docs/infrastructure-metrics)します。[データが表示されない](/docs/infrastructure/new-relic-infrastructure/troubleshooting/no-data-appears-infrastructure)場合、必要に応じてトラブルシューティングプロセスに従ってください。
 
 <Callout variant="important">
   インストール対象サーバーのホスト名に`localhost`は使用できません。ホスト名がlocalhostのサーバーに対して、データはレポートされません。必ず、ホスト名には[固有の名前](/docs/infrastructure/new-relic-infrastructure/getting-started/compatibility-requirements-new-relic-infrastructure#hostname)をつけましょう。

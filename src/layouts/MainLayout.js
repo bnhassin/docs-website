@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  CookieConsentDialog,
   GlobalHeader,
   Layout,
   Link,
@@ -47,7 +46,10 @@ const MainLayout = ({ data = {}, children, pageContext }) => {
   return (
     <>
       <SEO location={location} />
-      <GlobalHeader />
+      <GlobalHeader
+        hideSearch={nav?.id === rootNav.id && true}
+        customStyles={{ navLeftMargin: '150px', searchRightMargin: '30px' }}
+      />
       <MobileHeader>
         {nav?.id === rootNav.id ? (
           <RootNavigation nav={nav} />
@@ -55,8 +57,21 @@ const MainLayout = ({ data = {}, children, pageContext }) => {
           <SubNavigation nav={nav} />
         )}
       </MobileHeader>
-      <Layout>
-        <Layout.Sidebar>
+      <Layout
+        css={css`
+          margin-top: 1rem;
+          -webkit-font-smoothing: antialiased;
+          font-size: 1.125rem;
+        `}
+      >
+        <Layout.Sidebar
+          css={css`
+            background: var(--primary-background-color);
+            hr {
+              border-color: var(--border-color);
+            }
+          `}
+        >
           <Link
             to="/"
             css={css`
@@ -95,7 +110,6 @@ const MainLayout = ({ data = {}, children, pageContext }) => {
         </Layout.Main>
         <Layout.Footer fileRelativePath={pageContext.fileRelativePath} />
       </Layout>
-      <CookieConsentDialog />
     </>
   );
 };

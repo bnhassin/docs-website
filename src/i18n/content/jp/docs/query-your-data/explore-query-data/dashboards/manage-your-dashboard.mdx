@@ -5,17 +5,26 @@ tags:
   - Explore and query data
   - Dashboards
 metaDescription: 'Manage your dashboard in New Relic: layout, export, night mode, create/edit/delete widgets.'
+translationType: human
 ---
 
-[New Relic Oneダッシュボード](/docs/dashboards/new-relic-one-dashboards/get-started/introduction-new-relic-one-dashboards)にアクセスし、チャートメニューから直接チャートを作成または管理し、ダッシュボードのレイアウトをカスタマイズし、表示モードを調整し、データのエクスポートを行います。
+import dashboardsMenu20210623 from 'images/dashboards_menu_20210623.png'
+
+import dashboardsPages from 'images/dashboards_pages.png'
+
+[New Relicダッシュボード](/docs/dashboards/new-relic-one-dashboards/get-started/introduction-new-relic-one-dashboards)にアクセスし、チャートメニューから直接チャートを作成または管理し、ダッシュボードのレイアウトをカスタマイズし、表示モードを調整し、データのエクスポートを行います。
 
 ダッシュボードをカスタマイズし、チャートを構築したら、データを詳しく知るための高度な視覚化機能とツールを使用して、データを関連付け分析します。
 
 ## ダッシュボードのカスタマイズ [#dash-manage]
 
-ダッシュボードは非常に柔軟です：ダッシュボードのレイアウトをカスタマイズし、チャートのサイズを調整してデータの表示方法を最適化できます。
+ダッシュボードは非常に柔軟です。ダッシュボードのレイアウトをカスタマイズし、チャートのサイズを調整してデータの表示方法を最適化できます。
 
-![ダッシュボード設定メニュー](./images/dashboards_menu_20210623.png "Dashboards configuration menu.png")
+<img
+  title="Dashboards configuration menu.png"
+  alt="Dashboards configuration menu"
+  src={dashboardsMenu20210623}
+/>
 
 <Callout variant="tip">
   <Icon name="fe-tag"/>アイコンをクリックして、**メタデータを表示しタグを管理**モーダルにアクセスします。ここで、ダッシュボードのGUIDやアカウントID、アプリIDを表示し、ダッシュボードに追加されたすべてのタグを管理できます。
@@ -30,9 +39,9 @@ metaDescription: 'Manage your dashboard in New Relic: layout, export, night mode
   >
     編集<Icon name="fe-edit-2"/>ボタンを使用して、次の操作を行います。
 
+    * ダッシュボードのパーマリンクをコピーします。
     * ダッシュボードの名前を変更する。名前は検索可能なため、意味のある名前を付けることを推奨します。
     * **ウィジェットを追加**ボタンをクリックして、新規コンテンツを作成する。[クエリビルダー](/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder)を使用して新規チャートを追加する、または[マークダウンエディタ](#markdown)を使用してテキストや画像、リンクを追加する。
-    * [新規ページを追加する](#add-pages)：ページを使用して、ダッシュボードをより整理できます。
     * チャートのサイズと範囲を変更する。設定したレイアウトが好みに合うように、任意のチャートを移動してダッシュボードの任意の場所に配置できます。適切なチャートを上に置いたり、使用頻度の低いチャートを隅にドロップしたりできます。最大で12列のチャートを設定できます。
   </Collapser>
 
@@ -57,9 +66,9 @@ metaDescription: 'Manage your dashboard in New Relic: layout, export, night mode
 
     TVモードを有効にするには、次の2つの方法があります。
 
-    * New Relic Oneでダッシュボードを表示している際に、右上の<Icon name="fe-tv"/>アイコンを選択します。
+    * ダッシュボードを表示している際に、右上の<Icon name="fe-tv"/>アイコンを選択します。
 
-    * このパラメーターをダッシュボードのページのURL：`&platform[tvMode]=true`に追加します。
+    * このパラメーターをダッシュボードのページのURLに追加します： `&platform[tvMode]=true`
 
       TVモードを設定するには、ダッシュボードから<Icon name="fe-settings"/>アイコンを選択します。オプションに含まれるもの：
 
@@ -91,188 +100,59 @@ metaDescription: 'Manage your dashboard in New Relic: layout, export, night mode
 
   <Collapser
     id="dash-clone"
-    title="ダッシュボードのクローンを作成"
+    title="ダッシュボードを複製する"
   >
-    許可レベルにかかわらず、クローンアイコンをクリックしてご利用のダッシュボードのクローンを作成できます。ダッシュボードは自動的にコピーされ、クローンが[インデックス](/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards/#get-started)に追加されます。クローンには、[**パブリック - 読み取りと書き込み**許可](/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards/#dashboards-permissions)があります。画面にポップアップ表示されるメッセージをクリックして、クローンされた新規ダッシュボードにアクセスします。
+    許可レベルにかかわらず、複製アイコンをクリックしてご利用のダッシュボードの複製を作成できます。ダッシュボードは自動的にコピーされ、複製が[インデックス](/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards/#get-started)に追加されます。複製には、[**パブリック - 読み取りと書き込み**許可](/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards/#dashboards-permissions)があります。画面にポップアップ表示されるメッセージをクリックして、複製された新規ダッシュボードにアクセスします。
 
-    クローン版のダッシュボードには、元のダッシュボードの名前の後に「コピー」が付けられます。たとえば、`This is my dashboard`という名前のダッシュボードのクローンを作成すると、クローンは`This is my dashboard copy`として作成されます。クローン作成時に名前を変更できます。
+    複製版のダッシュボードには、元のダッシュボードの名前の後に「コピー」が付けられます。たとえば、`This is my dashboard`という名前のダッシュボードの複製を作成すると、複製は`This is my dashboard copy`と呼ばれます。複製の作成時に名前を変更できます。
 
     ダッシュボードの名前や許可などのその他のプロパティは、いつでも編集できます。
   </Collapser>
 </CollapserGroup>
 
 <Callout variant="tip">
-  いつでも[検索](/docs/new-relic-one-core-ui-components)機能を使用して、[New Relic One](/docs/new-relic-one/use-new-relic-one/get-started/introduction-new-relic-one)全体でデータを検索できます。
+  いつでも[検索](/docs/new-relic-one-core-ui-components)機能を使用して、[New Relic](/docs/new-relic-one/use-new-relic-one/get-started/introduction-new-relic-one)全体でデータを検索できます。
 </Callout>
 
 ## 新規コンテンツをダッシュボードに追加する [#dash-create-chart]
 
-複数の方法で、ダッシュボードに新規コンテンツを追加できます：
+ダッシュボードに新しいコンテンツを追加するいくつかの方法をご紹介します。
 
-* [データエクスプローラー](/docs/query-your-data/explore-query-data/data-explorer/introduction-data-explorer)および[クエリビルダー](/docs/introduction-chart-builder)機能から。
+* [データエクスプローラー](/docs/query-your-data/explore-query-data/data-explorer/introduction-data-explorer)および[クエリビルダー](/docs/introduction-chart-builder)から。
 * **+ ダッシュボードに追加**ボタン（メインのダッシュボードのページから、または編集モードでアクセス可能）を使用して、[クエリビルダー](/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder)にアクセスするか、[マークダウンエディタ](#dash-create-chart)を使用してコンテンツ（テキストやリンク、画像など）を追加する。
 * ダッシュボードから[既存のチャートをコピーする](#dash-manage-charts)。
 
-### マークダウンエディタを使用して、カスタムコンテンツを追加する。 [#markdown]
+新規コンテンツの追加で問題が発生した場合は、[エラーメッセージを確認](/docs/query-your-data/explore-query-data/dashboards/dashboards-charts-import-export-data/#chart-error-messages)してください。
 
-マークダウンエディタには、コンテンツを入力する**マークダウン**ペインや、表示する**プレビュー**ペインが含まれます。マークダウン構文オプションの詳細については、[Commonmarkのウェブサイト](https://commonmark.org/help/)をご覧ください。
+### マークダウンエディタを使用して、カスタムコンテンツを追加する [#markdown]
+
+マークダウンエディタには、コンテンツを入力する**マークダウン**ペインや、表示する**プレビュー**ペインが含まれます。マークダウン構文オプションの詳細については、[GitHubのマークダウンガイド](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)をご覧ください。
 
 マークダウンウィジェットの楕円<Icon name="fe-more-horizontal"/>アイコンをクリックし、**編集**をクリックして、既存のコンテンツを編集することもできます。
-
-### コンテンツの問題 [#chart-error-messages]
-
-チャートを追加すると、次のような問題が発生することがあります。
-
-<table>
-  <thead>
-    <tr>
-      <th style={{ width: "400px" }}>
-        **エラーメッセージ**
-      </th>
-
-      <th style={{ width: "400px" }}>
-        **説明**
-      </th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>
-        クエリの実行中に問題が発生しました。
-      </td>
-
-      <td>
-        データの取得中に予期しないエラーが発生しました。数分後にもう一度試してください。それでも問題が解決しない場合は、[サポート](https://support.newrelic.com/)にお問い合わせください。
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        クエリがタイムアウトしたか、負荷が高くなっています。さらにサポートが必要な場合は、[https://support.newrelic.com/](https://support.newrelic.com/)に移動してください。
-      </td>
-
-      <td>
-        NRDBには大きな負荷がかかっており、断続的なタイムアウトが発生します。数分後にもう一度試してください。
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        アカウント2022412をクエリする権限がありません
-      </td>
-
-      <td>
-        このアカウントへのアクセス権がありません。詳細については、管理者にお問い合わせください。
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        TIMESERIESステップサイズが現在の時間枠より大きい。
-      </td>
-
-      <td>
-        [`TIMESERIES`](/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-timeseries)ステップサイズが、選択した時間枠より大きい。ステップを変更して、クエリを再度実行します。
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        NerdGraphGetAuthorizedAccountsCommandの短絡とフォールバックが無効になっています。
-      </td>
-
-      <td>
-        要求の承認中に通信に失敗しました。数分後にもう一度試してください。
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        TIMESERIESは最大366個のバケットをサポートします
-      </td>
-
-      <td>
-        [`TIMESERIES`](/docs/query-your-data/nrql-new-relic-query-language/get-started/nrql-syntax-clauses-functions/#sel-timeseries)バケットのサイズが小さすぎるため、選択したすべての時間枠にまたがることができません。バケットのサイズを変更して、クエリを再度実行します。
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        このクエリグループによって検査済みカウント制限が超過したため、クエリは拒否されました。
-      </td>
-
-      <td>
-        クエリ制限を超えました。[アカウントごとのデータ使用制限とポリシー](/docs/licenses/license-information/general-usage-licenses/new-relic-data-usage-limits-policies/)を確認してください。
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        アプリケーションは一致しませんでした（appId、appName、entity.guidを指定しましたか？）
-      </td>
-
-      <td>
-        クエリに一致するエンティティがありません。指定された`appId`、`appName`、`entity.guid`を確認し、クエリを再度実行してください。  
-
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        クエリの開始時刻は、終了時刻より前でなければなりません。
-      </td>
-
-      <td>
-        指定されたクエリの`startTime`は、`endTime`より前でなければなりません。変更して、クエリを再度実行します。
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        'nrql'の検証エラー：クエリを指定する必要があります
-      </td>
-
-      <td>
-        有効なNRQLクエリを指定する必要があります。[当社のクエリ言語](/docs/query-your-data/nrql-new-relic-query-language/get-started/introduction-nrql-new-relics-query-language/)について詳細をご覧ください。
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        NRQL構文エラー：1行目15番目の予期しない'FROM'のエラー
-
-        FACETおよびTIMESERIESは、イベントではサポートされていません。
-      </td>
-
-      <td>
-        クエリに構文の問題があります。[クエリビルダー](/docs/query-your-data/explore-query-data/query-builder/introduction-query-builder/)でエラーを確認します。
-      </td>
-    </tr>
-  </tbody>
-</table>
 
 ## ページのあるダッシュボードを整理する [#add-pages]
 
 複数のページを使用して、さまざまな表示でダッシュボードを整理できます。ページをそのダッシュボードに追加すると、ダッシュボードUIの上部にあるタブを使用して、そのページにアクセスできます。
 
-![dashboards_pages.png](./images/dashboards_pages.png "dashboards_pages.png")
+<img
+  title="dashboards_pages.png"
+  alt="dashboards_pages.png"
+  src={dashboardsPages}
+/>
 
 <figcaption>
-  **[one.newrelic.com](https://one.newrelic.com) > Dashboards**：ダッシュボードの上部にあるタブで表示された、複数のページのあるNew Relic Oneのダッシュボードの例は次のとおりです。ページをダッシュボードに追加し、既存のページをコピーし、ページタブを新たな位置にドラッグしてドロップできます。
+  **[one.newrelic.com](https://one.newrelic.com) > Dashboards**：ダッシュボードの上部にあるタブで表示された、複数のページのあるダッシュボードの例は次のとおりです。ページをダッシュボードに追加し、既存のページをコピーし、ページタブを新たな位置にドラッグしてドロップできます。
 </figcaption>
 
 この機能を使用して、関連するダッシュボード表示をグループ化できます。これは、特定のプロジェクトやチーム、主題に関連する多くのデータとチャートを集計する際に有用です。
 
 たとえば、モバイルアプリチームは、国ごとにアプリのパフォーマンスに重点を置いたダッシュボードを構築できます。最初のダッシュボードのページを、すべての国のパフォーマンスの概要とし、その他のページで特定の国を取り上げることができます。
 
-当社では、ダッシュボードをつなぐその他の機能を提供しています。
+ダッシュボードをつなぐその他の機能があります。
 
 * [マークダウンテキストを含むウィジェットを作成](#markdown)して、特定のUIページやダッシュボードへのダイレクトリンクを追加します。
 * [ファセットによるフィルタリング](/docs/dashboards/new-relic-one-dashboards/manage-your-dashboard/filter-new-relic-one-dashboards-facets)を使用して、自動的にその他のダッシュボードにリンクしフィルタリングを行うリンクを作成します。
 * ダッシュボード検索を使用して、似た名前のダッシュボードを検索します。この機能を活用して、チームやプロジェクトに固有の語句をダッシュボード名に追加できます。
-
-New Relic Insightsでは、この機能は[データアプリ](/docs/insights/use-insights-ui/manage-dashboards/data-apps-build-collections-linked-dashboards)と呼ばれていました。InsightsからNew Relic Oneの切り替えの詳細については、[移行ガイド](/docs/dashboards/new-relic-one-dashboards/get-started/transition-new-relic-one-dashboards-insights)をご覧ください。
 
 ### ページをダッシュボードに追加し編集する [#add-pages-edit]
 
@@ -301,7 +181,9 @@ New Relic Insightsでは、この機能は[データアプリ](/docs/insights/us
 * 画像として、またはリンクを付けて[チャートを共有する](#dash-export)。
 * チャートをダッシュボードにコピーする。
 * テーブルチャートのみの場合、`.csv`ファイルとしてエクスポートします。このファイルをMicrosoft ExcelやGoogle Sheetsなどの他のアプリケーションにインポートして、さらに分析することができます。
-* [クエリビルダー](/docs/chart-builder/use-chart-builder/get-started/introduction-chart-builder)にアクセスし、チャートに関連したクエリを表示または編集する。
+* アラート条件を作成します。
+* [NRQLコンソール](/docs/query-your-data/explore-query-data/query-builder/nrql-console/)を開き、チャートに関連付けられたクエリを表示または編集します。
+* チャートを複製します。
 * チャートを削除する。
 
 <Callout variant="important">
@@ -323,13 +205,13 @@ New Relic Insightsでは、この機能は[データアプリ](/docs/insights/us
 
 ## チャート凡例を使用してフィルターを適用する [#filter-legend]
 
-凡例のついたチャートで凡例をクリックして、その系列のみを表示し、チャートから残りのものを削除します。これにより、分析するデータを隔離できます。
+凡例の付いたチャートで凡例をクリックして、その系列のみを表示し、チャートから残りの系列を削除します。これにより、分析するデータを隔離できます。
 
-CMD（Mac）またはCTRL（Windows）を使用して、選択したシリーズを削除し、残りのシリーズを保持します。
+反対の操作を行うには、&lt;CMD?（Mac）または&lt;CTRL>（Windows）を使用します。これにより、選択した系列が削除され、残りの系列が保持されます。
 
-## ファセットを使用してダッシュボードにフィルターを適用する
+## ファセットを使用してダッシュボードにフィルターを適用する [#filter-facets]
 
-チャートのNRQLクエリに`FACET`句が含まれる場合、ファセットのついた属性を使用して、現在のダッシュボードまたは別の関連するダッシュボードにフィルターを適用できます。詳細については、[ファセットによりフィルターを適用する](/docs/dashboards/new-relic-one-dashboards/manage-your-dashboard/filter-new-relic-one-dashboards-facets)をご覧ください。
+チャートのNRQLクエリに`FACET`句が含まれる場合、ファセットの付いた属性を使用して、現在のダッシュボードまたは別の関連するダッシュボードにフィルターを適用できます。詳細については、[ファセットによるフィルターの適用](/docs/dashboards/new-relic-one-dashboards/manage-your-dashboard/filter-new-relic-one-dashboards-facets)をご覧ください。
 
 ## タイムピッカーを使用して時間設定を変更する [#dash-time-picker]
 
@@ -339,16 +221,23 @@ CMD（Mac）またはCTRL（Windows）を使用して、選択したシリーズ
 
 時間範囲を変更するには：
 
-* ドロップダウンメニューから、利用可能なオプション（`直近30分`から`直近7日`まで）を1つ選択します。
+* ドロップダウンメニューから、利用可能なオプション（`Last 30 minutes`から`Last 7 days`まで）を1つ選択します。
 * カスタムメニューを使用して、特定の開始および終了タイムスタンプで時間範囲をカスタマイズします。
-
-<Callout variant="important">
-  ダッシュボードでは、Insightsとは異なり、タイムゾーンはお使いのノートパソコンの時間とは関連していません。タイムピッカーのカスタムメニューから簡単にアクセスできる**ユーザー設定**で、使用するタイムゾーンを設定できます。
-</Callout>
 
 ## データをエクスポートし共有する [#dash-export]
 
 社内外でダッシュボードとチャートデータをエクスポートし共有することは、非常に簡単です。
 
-* 右上のメニューバーにある**PDFとしてダッシュボードをエクスポート**ボタンを使用して、PDFファイルとしてダッシュボードをエクスポートできます。
-* チャートをPNG画像またはリンクとして共有することもできます。チャートメニューに移動し、**画像として取得**または**チャートリンクを取得**オプションのいずれかを選択します。
+* 右上のメニューバーにある**PDFとしてダッシュボードをエクスポート**ボタンをクリックして、PDFファイルとしてダッシュボードをエクスポートできます。
+* チャートをPNG画像またはリンクとして共有する：チャートメニューに移動し、**画像として取得**または**チャートリンクを取得**オプションのいずれかを選択します。
+
+PDFまたは画像としてのエクスポートには、チャートの種類に応じて特定の制限があります。
+
+## 削除されたダッシュボードを復元する [#deleted]
+
+ダッシュボードを誤って削除した場合は、NerdGraphを使用することですばやく復元できます。その復元方法については、[Explorers Hubの投稿](https://discuss.newrelic.com/t/relic-solution-using-nerdgraph-to-recover-a-deleted-dashboard/142855)を読むか、この短いビデオ（2分13秒）をご覧ください。
+
+<Video
+  id="W_HblVC4mqU"
+  type="youtube"
+/>

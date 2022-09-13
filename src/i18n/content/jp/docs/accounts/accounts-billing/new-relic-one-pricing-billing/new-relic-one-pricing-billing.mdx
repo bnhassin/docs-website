@@ -1,142 +1,91 @@
 ---
-title: New Relic Oneの価格設定と請求
+title: 従量課金制価格設定モデル
 tags:
   - Accounts
   - Accounts and billing
-  - New Relic One pricing and billing
-metaDescription: How the New Relic One pricing plan and billing calculations work.
+  - New Relic pricing and billing
+metaDescription: 'For New Relic: an explanation of how our usage-based pricing model works.'
+translationType: human
 ---
 
-New Relic One価格設定の仕組みと、請求を表示、管理する方法についての説明。
-
-<Callout variant="important">
-  本ドキュメントでは、New Relic Oneの価格プランについて説明します。オリジナル価格プランが適用される場合、[オリジナルの価格設定](/docs/accounts/original-accounts-billing/product-pricing/product-based-pricing)をご覧ください。どちらが適用されるか分からない場合[価格設定の概要](/docs/transition-guide-our-new-pricing-plan-user-model)をご覧ください。
-</Callout>
-
-## New Relic Oneの価格設定プランの仕組み [#how-pricing-works]
+これは、当社の従量課金制価格設定モデル（旧称New Relic Oneの価格設定モデル）についての説明です。この価格設定モデルは使用量に応じて課金：データ取り込みと請求対象ユーザー数。
 
 <Callout variant="tip">
-  当社の[オブザーバビリティプラットフォーム](https://one.newrelic.com)を使用するには、New Relicファミリーに参加してください。[サインアップ](https://newrelic.com/signup)すると、わずか数秒で無料アカウントを作成できます。次に、毎月最大で100GBのデータを無料で取り込みます。期間無制限です。
+  2つの価格設定モデルがあります。どちらのモデルが適用されるか分からない場合[価格設定の概要](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-pricing-models)をご覧ください。
 </Callout>
 
-2020年7月30日以降、すべての新規顧客は、**New Relic One価格設定**と呼ばれる価格設定プランを利用しています。オリジナルの価格設定プランをご利用のお客様は、[この価格に移行](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-changes-pricing-user-model#how-to-transition)できます。
+## 使用量に基づく価格設定の仕組み [#how-pricing-works]
 
-New Relic One の価格設定については、請求は次の要素に基づいています。
+当社の使用量に基づく価格設定モデルは、[New Relicを無料で使用する](#free)場合でも、簡単で多くの価値を提供することを目的としています。当社の価格設定モデルは、以下の要素に基づいて請求します。
 
-* [取り込まれた](/docs/telemetry-data-platform/get-started/introduction-new-relic-data-ingest-apis-sdks/)データ量。1か月あたり100 GBは無料です。100 GBを超えて使用した場合は、GBあたり0.25ドル。
+* [取り込んだデータ](/docs/accounts/accounts-billing/new-relic-one-pricing-billing/data-ingest-billing)。当社は、どのような種類のデータであっても、取り込んだデータ量に基づいて請求を行い、お客様の請求内容を理解しやすくします。1か月あたり100GBを無料でご提供します。無料枠を超える1GB当たりの価格は、利用される[データオプション](/docs/accounts/accounts-billing/new-relic-one-pricing-billing/data-ingest-billing#data-prices)に応じて異なります。
+* Your [billable user count](/docs/accounts/accounts-billing/new-relic-one-pricing-billing/user-count-billing). Core users and full platform users are billable. Basic users are free. Your per-user cost depends on your pricing edition. Free tier and Standard edition get one free full platform user.
 
-* [フルスタックオブザーバビリティ機能](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#user-capabilities)にアクセスできるユーザーとして定義された、プロビジョニングされた[フルユーザー](/docs/accounts/accounts-billing/new-relic-one-pricing-users/users-roles#user-type)の数。[ベーシックユーザー](/docs/accounts/accounts-billing/new-relic-one-pricing-users/users-roles#user-type)は無料です。
+Our pricing editions (Standard, Pro, Enterprise) give you access to some different features and limits (for example, different limits for synthetic monitor checks, and access to FedRAMP- and HIPAA- compliant data). For more detail, see the [pricing page](https://newrelic.com/pricing).
 
-  * 各フルユーザーの料金は、[Standard、Pro、またはEnterprise](https://newrelic.com/pricing)の各エディションによって異なります。Standardエディションには、1人の無料フルユーザー、最大5人が含まれます。ProとEnterpriseでは、より多くのアカウントとユーザー管理機能、さらなるサポート、より長いデータ保持期間、[その他の機能](https://newrelic.com/pricing)へのアクセスを提供します。
+## What do you get for free? [#free]
 
-* [応用インテリジェンス](https://newrelic.com/pricing)の場合は、インテリジェントアラート/検知システム: 月あたり無料の1000を超えるインシデントイベント数。（アラート機能は無料で利用でき、この制限にはカウントされない点に注意してください。）
+If you're below the free limits, you can use New Relic free, forever. Here's a summary of what you get on the free tier:
 
-無料に含まれるものの概要については、[無料エディション](#free)を参照してください。
+* Up to 100 GBs of ingested data per month ([learn more about exceeding this limit](/docs/accounts/accounts-billing/new-relic-one-pricing-billing/data-ingest-billing#free-tier-limits)).
+* One [full platform user](/docs/accounts/accounts-billing/new-relic-one-user-management/user-type), and unlimited [basic users](/docs/accounts/accounts-billing/new-relic-one-user-management/user-type)
+* A single account in your New Relic organization (having [multiple accounts](/docs/accounts/accounts-billing/account-structure/new-relic-account-structure) requires [Pro or Enterprise edition](https://newrelic.com/pricing)).
 
-価格設定の概要については、[価格設定ページ](https://newrelic.com/pricing)を参照してください。
+Here are some additional free tier limits:
 
-New Relic Oneの価格設定と請求の詳細については、以下を読んでください。
+* [Synthetic monitor check limits](/docs/synthetics/synthetic-monitoring/using-monitors/monitor-limits): 500 per month (compared to 10K for Standard)
+* [Dimensional metric limits are lower](/docs/data-apis/ingest-apis/metric-api/metric-api-limits-restricted-attributes/#additional-considerations) than for Standard
+* [SAP monitoring](/docs/data-apis/custom-data/sap-integration/#requirements) is not available
 
-## UIでの請求および使用 [#billing-usage-ui]
+## 価格設定プランまたはオプション [#plan-variations]
 
-UIでの請求および使用の表示および管理方法については、[価格設定および請求UI](/docs/accounts/accounts-billing/general-account-settings/introduction-account-settings/#new-relic-one-pricing)を参照してください。
+当社の使用量に基づく価格設定モデルには、お客様の請求に影響を与える可能性のあるいくつかのバリアントがあります。
 
-使用状況UIよりも詳細な情報が必要な場合は、[使用データのクエリを実行してアラートを設定する](/docs/accounts/accounts-billing/new-relic-one-pricing-users/queries-alerts)こともできます。
+* **コアユーザー**：2022年1月12日、当社は使用量に基づく価格設定の新バージョンをリリースしました。新しいユーザータイプ（コアユーザー）と、請求対象ユーザーの計算方法が異なります。詳細については、[コアユーザーのリリース](/docs/accounts/accounts-billing/new-relic-one-pricing-billing/core-users-release)を参照してください。
+* **Data Plus**：2022年6月1日に、Data Plusと呼ばれるより強力なデータオプションをリリースしました。詳細については、[Data Plus](/docs/accounts/accounts-billing/new-relic-one-pricing-billing/data-ingest-billing#data-prices)を参照してください。
+* **段階的な価格設定**：一部の組織では、請求可能なユーザーの段階的価格設定にアクセスできます。詳細については、[段階的な価格設定](#tiered-pricing)をご覧ください。
 
-## 請求計算の詳細 [#calculation-details]
+## UIでの使用状況の表示 [#billing-usage-ui]
 
-New Relic One価格設定が適用されるアカウントの場合は、一部の高レベルの請求情報は[UI](#billing-usage-ui)に表示されます。以下に、請求の仕組みの詳細を示します。
+UIで請求および使用状況の情報を検索する方法については、[請求関連のUI](/docs/accounts/accounts-billing/general-account-settings/introduction-account-settings)を参照してください。
 
-<CollapserGroup>
-  <Collapser
-    id="usage-calculation"
-    title="データ使用量の計算"
-  >
-    [価格設定](#how-pricing-works)要因の1つは、投入したデータです。このコンテキストで「投入」とは、さまざまなデータトリミングとデータ変換規則適用後に、アカウントにデータが実際に保存されたことを指します。つまり、New Relicに送信された生データのサイズではなく、最終的に実際に保存されたデータのサイズとなります。使用量を表示、管理するには、[使用量UI](#billing-usage-ui)に移動します。
+<Callout variant="important">
+  [初代のユーザーモデル](/docs/accounts/original-accounts-billing/original-product-based-pricing/overview-user-models)を使用している場合は、[請求対象ユーザーの管理に関する考慮事項](/docs/accounts/original-accounts-billing/original-users-roles/users-roles-original-user-model#managing-billable-users)を参照してください。
+</Callout>
 
-    その他の計算の詳細：
+## データインジェストの計算 [#usage-calculation]
 
-    * 当社の価格設定プランでは、GBは10億バイトとして定義されます。
+データインジェストの計算方法を理解したいですか？[データインジェストの計算](/docs/accounts/accounts-billing/new-relic-one-pricing-billing/data-ingest-billing)を参照してください。
 
-    * 1か月に投入したデータは、最も近い整数に丸められます。たとえば、アカウントが月に100.9GBを使用する場合は、100GBとカウントされます。
+データの管理をご希望ですか？[データの管理](/docs/data-apis/manage-data/manage-data-coming-new-relic)を参照してください。
 
-      データの投入方法の詳細については、[データ投入の管理](/docs/telemetry-data-platform/get-data-new-relic/manage-data/manage-data-coming-new-relic)を参照してください。
+## ユーザーカウントの計算 [#user-count]
 
-      クエリの使用方法については、[使用データのクエリとアラート](/docs/accounts/accounts-billing/new-relic-one-pricing-users/usage-queries-alerts)を参照してください。
-  </Collapser>
+請求対象ユーザーの計算方法については、[ユーザーカウントの計算](/docs/accounts/accounts-billing/new-relic-one-pricing-billing/user-count-billing)を参照してください。
 
-  <Collapser
-    id="user-count"
-    title="フルユーザーカウントの請求詳細"
-  >
-    [New Relic Oneの価格設定](/docs/accounts/accounts-billing/new-relic-one-pricing-users/pricing-billing)がされたアカウントの場合は、プロビジョニングされた[フルユーザー](/docs/accounts/accounts-billing/new-relic-one-pricing-users/users-roles#user-type)の毎月のカウントは請求要因の1つです。例をあげると、Pro価格設定エディションであり、組織に1月中に100人のフルユーザーがいる場合、その月は100人のフルユーザーに請求されます。フルユーザーは、ユーザーがログインしている、またはNew Relicを使用したことがあるかを問わず、New Relic組織（設定済み）に追加された時点で請求可能ユーザーとしてカウントされます。
+## 請求スケジュールオプション [#usage-plans]
 
-    ユーザーの[ユーザータイプ](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#user-type)とは、ユーザーが期待したNew Relicの義務と責任によって決定された長期設定を意図しています。ユーザータイプが請求要因であるため、フルユーザーが基本ユーザーにどのような頻度でダウングレードできるかについて制限があります。**フルユーザーは連続した12か月の期間で最大2回ダウングレードできます。**フルユーザーが12か月の期間で2回基本ユーザーに変更された場合、そのユーザーは次の12か月の期間が始まるまで基本ユーザーには戻れません。1つのユーザータイプまたは別のユーザータイプを割り当てる理由を学習するには、[ユーザータイプの割り当てに関するヒント](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#decide-user-type)を参照してください。
+New Relicの組織では、請求スケジューリングの処理方法を管理する数種類の計画から1つを選ぶことができます。主なオプションは次のとおりです：
 
-    ユーザー関連の請求の詳細と注意事項は次のとおりです。
+* **従量課金制**：このオプションでは、請求は月末に行われます。当月を超える支払いコミットメントはなく、組織はいつでもキャンセルできます。組織の最初の月末請求には、クレジットカード情報がNew Relicに入力された時点からの請求可能な使用量が含まれます。
+* **契約**：契約オプションには、当社の**年間資金プール**オプションとその他のオプションが含まれます。契約では、長期の予想使用量（取り込みデータおよび請求対象ユーザー）の見積もりが作成され、合意済みの支払いコミットメントが課せられます。組織の使用量がコミットメントの範囲を超える場合、超過分は事前に合意した料金で請求されます。これらは主にProおよびEnterpriseエディションの組織で利用できます。
 
-    * フルユーザーカウントは[UI](/docs/accounts/accounts-billing/general-account-settings/introduction-account-settings/#pricing)に表示できます。
-    * 重複するメールアドレスのあるユーザーは、1回しかカウントされません。
-    * フルユーザーのカウントは、New Relicサブスクリプション期間の開始またはユーザーがフルユーザーとして作成される、またはフルユーザーに変換されるときに基づき日割り計算されます。
-    * New Relicユーザーは、最大で3つの並行するアクティブセッション、または3つの一意のIPアドレスを、所定の時間に使用できます。
-    * [親/子アカウント構造](/docs/accounts/original-accounts-billing/original-users-roles/mastersub-account-structure)を持つ元のアカウント/ユーザーモデルを使用している組織では、UIで請求可能なユーザーのカウントは表示されているユーザーと異なる場合があります。詳細については、[ユーザーカウントの不一致](/docs/accounts/original-accounts-billing/original-users-roles/users-roles-original-user-model#full-user-count)を参照してください。
-    * New Relic Oneの価格設定プランの[Standardエディション](https://newrelic.com/pricing)には、1人の無料フルユーザーが含まれます。
-    * [オリジナル使用モデル](/docs/accounts/original-accounts-billing/original-users-roles/users-roles-original-user-model/#user-type)の組織の場合、ユーザーはあるアカウントの基本ユーザーとして設定され、別のアカウントのフルユーザーとして設定されます。その場合、フルユーザーステータスが優先され、そのユーザーがフルユーザーと見なされます。
+これらのオプションがユーザーのダウングレードルールにどのように影響するかについての詳細は、[ダウングレードのルール](/docs/accounts/accounts-billing/new-relic-one-pricing-billing/user-count-billing#user-downgrade-rules)を参照してください。
 
-    使用データのクエリの方法については、[使用データのクエリおよびアラート](/docs/accounts/accounts-billing/new-relic-one-pricing-users/usage-queries-alerts)を参照してください。
+## 段階的な価格設定 [#tiered-pricing]
 
-    ユーザー機能の詳細については、[ユーザーとロール](/docs/accounts/accounts-billing/new-relic-one-pricing-users/users-roles)を参照してください。
-  </Collapser>
+[契約](#usage-plans)している一部のProおよびEnterpriseエディションを利用している組織では、データおよび/または請求可能なユーザーの段階的な価格設定にアクセスできます。価格および段階レベルは、組織の特定の契約に応じて異なります。
 
-  <Collapser
-    id="data-retention"
-    title="データ保持期間"
-  >
-    [データ保持期間](/docs/manage-stored-data)を参照してください。
-  </Collapser>
+以下は、フルプラットフォームユーザーに対して段階的な価格設定をしている組織がどのように機能するかの例です。
 
-  <Collapser
-    id="billing-periods"
-    title="請求期間"
-  >
-    その都度払いのお客様については、請求は月末（UTC）に発生し、[UI](#billing-usage-ui)で追跡できます。
+* 価格xのユーザー#1～10
+* 価格y（x未満）のユーザー#11～20
+* 価格z（y未満）のユーザー#21～30
 
-    クレジットカードを入力し、課金を開始すると、月末の請求書で、その月の初めから発生したすべての活動（請求対象のデータの使用およびユーザー）が対象となります。
+下位層の請求対象ユーザーは、後続のユーザーに対してロック解除されている他の、より安価な層の数に関係なく、その層のコストで課金対象のままであることに注意してください。上記の例では、顧客がその月に29人のフルプラットフォームユーザーを保持している場合、その月の請求可能なフルプラットフォームユーザーは、a) 10人のユーザー×価格x、b) 10人のユーザー×価格y、およびc) 9人のユーザー×価格zの合計になります。
 
-    たとえば、クレジットカードを月の半ばに入力し、その時点でアカウントでその月の使用量が200GBの場合、その200GBは月末の請求書で処理されます。
+段階的な価格設定をご希望の場合は、アカウント担当者にお問い合わせください。
 
-    ユーザー関連の使用データのクエリの方法については、[使用データのクエリとアラート](/docs/accounts/accounts-billing/new-relic-one-pricing-users/usage-queries-alerts)を参照してください。
-  </Collapser>
-</CollapserGroup>
+## 発表：2022年5月に推定コストを削除 [#estimated-cost-removal]
 
-## 利用プランの詳細 [#usage-plans]
-
-New Relic Oneの価格設定利用プランには、次の2つがあります。
-
-* **従量課金**: このプランでは、各月末に請求されます。コミットメントはなく、いつでもキャンセルできます。詳細については、[利用プラン](/docs/licenses/license-information/usage-plan-descriptions/usage-plan#pay-as-you-go)を参照してください。
-* **年間資金プール**: このプランは、契約期間が1年以上のお客様に適用されます。詳細については、[利用プラン](/docs/licenses/license-information/usage-plan-descriptions/usage-plan#annual-pool-of-funds)を参照してください。
-
-よくある質問については、[価格設定のFAQ](/docs/licenses/license-information/faq/frequently-asked-questions)を参照してください。
-
-## 利用データについてのクエリとアラート [#query-alert]
-
-利用データの詳細なクエリを作成し、特定の利用レベルに近づいたときに通知を受けるには、[利用データのクエリ](/docs/accounts/accounts-billing/new-relic-one-pricing-users/queries-alerts)を参照してください。
-
-## 無料ティア [#free]
-
-お客様の組織が、Full-Stack Observabilityの[New Relic One価格設定](#how-pricing-works)および[Standard価格設定エディション](https://newrelic.com/pricing)にある場合は、無料が許可された限度内の場合、お客様はNew Relicを無限に無料で使用できます。Standardエディションが無料でアクセスできるものの概要は、以下のとおりです。
-
-* シングルアカウント（ProおよびEnterprise Full-Stack Observabilityエディションは組織当たりに複数のアカウントを持てます）。
-* 1か月あたり100GBのインジェストされたデータ　ga
-* [フルユーザー](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#user-type)1人および無限の[ベーシックユーザー](/docs/accounts/accounts-billing/new-relic-one-user-management/new-relic-one-user-model-understand-user-structure/#user-type)。
-* アラートと[Applied Intelligence](https://newrelic.com/platform/applied-intelligence)へのアクセス（1か月あたり最大1,000のIncident Intelligenceイベント）。
-
-ProまたはEnterpriseにアップグレード、または価格設定の詳細については、[New Relicの価格設定](https://newrelic.com/pricing)を参照してください。
-
-## New Relicの非営利利用 [#non-profit]
-
-特別価格でのNew Relicの使用をご希望される非営利団体のお客様は、[非営利団体の資格に関するドキュメント](/docs/accounts/accounts/subscription-pricing/eligibility-guidelines-new-relic-nonprofit-program/)をご覧ください。
-
-## キャンセルまたはダウングレード [#cancel-downgrade]
-
-[アカウントのダウングレード](/docs/accounts/accounts-billing/general-account-settings/downgrade-cancel-account)を参照してください。
+2022年5月には、使用量UIおよび使用関連イベントから当月の推定コストを削除しました。詳細については、[リリースノート](/docs/release-notes/org-user-mgmt-release-notes/org-users-22-05-01)を参照してください。

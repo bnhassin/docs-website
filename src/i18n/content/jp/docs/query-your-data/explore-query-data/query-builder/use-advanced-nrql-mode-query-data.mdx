@@ -5,15 +5,28 @@ tags:
   - Explore and query data
   - Query builder
 metaDescription: Using advanced NRQL mode to specify data and get a chart.
+translationType: human
 ---
+
+import inlineAdvancedNrql0 from 'images/inline-advanced-nrql_0.png'
+
+import querybuilder05 from 'images/querybuilder05.png'
+
+import cropPromptNrql from 'images/crop-prompt-nrql.png'
 
 基本モードは、クエリ作成法について知らずにチャートを作成するのには適していますが、詳細（NRQL）モードでは、より強力な追加機能を利用できます。
 
 **基本**モードで指定したデータは、**詳細（NRQL）**モードでNRQLクエリとして作成できます。
 
-基本モードのデータ指定がNRQLクエリでどうなるかを確認するには、基本ページの詳細（NRQL）![inline-advanced-nrql.png](./images/inline-advanced-nrql_0.png "inline-advanced-nrql.png")リンクをクリックします。
+基本モードのデータ指定がNRQLクエリでどうなるかを確認するには、基本ページの詳細 (NRQL)<img title="inline-advanced-nrql.png" alt="inline-advanced-nrql.png" src={inlineAdvancedNrql0}>リンクをクリックします。</img>
 
-![querybuilder05.png](./images/querybuilder05.png "querybuilder05.png")
+基本ページのリンク。
+
+<img
+  title="querybuilder05.png"
+  alt="querybuilder05.png"
+  src={querybuilder05}
+/>
 
 <figcaption>
   詳細（NRQL）クエリの例。
@@ -24,9 +37,9 @@ metaDescription: Using advanced NRQL mode to specify data and get a chart.
 **基本**モードから**詳細（NRQL）**モードに切り替えると、クエリで基本データ仕様と全く同じチャートが表示されます。
 
 <Callout variant="important">
-  基本モードを使用してクエリを作成**した後、**上級（NRQL）モードでそのクエリに変更を加えた場合、基本モードに戻ってクエリを編集することは**できません**。
+  基本モードを使用してクエリを作成**した後、**詳細（NRQL）モードでそのクエリを変更すると、基本モードに戻ってクエリを編集することは**できません**。
 
-  さらに変更を行う場合は、上級（NRQL）モードにおいてのみ実行できます。
+  追加変更は、詳細（NRQL）モードでのみ実行できます。
 </Callout>
 
 この表を使用して、基本モード仕様がどのように同様のNRQLクエリに対応しているかを理解してください。
@@ -55,11 +68,11 @@ metaDescription: Using advanced NRQL mode to specify data and get a chart.
       </td>
 
       <td>
-        トランザクションで**チャートを表示** `: 名前 : unique_count`
+        **でチャートを表示** `Transaction : Name : unique_count`
       </td>
 
       <td>
-        [`SELECT`](/docs/insights/nrql-new-relic-query-language/nrql-reference/nrql-syntax-components-functions#state-select) [`uniqueCount`](/docs/insights/nrql-new-relic-query-language/nrql-reference/nrql-syntax-components-functions#func-uniqueCount)(name) [`FROM`](/docs/insights/nrql-new-relic-query-language/nrql-reference/nrql-syntax-components-functions#sel-from) `Transaction`
+        [`SELECT`](/docs/insights/nrql-new-relic-query-language/nrql-reference/nrql-syntax-components-functions#state-select) [`uniqueCount`](/docs/insights/nrql-new-relic-query-language/nrql-reference/nrql-syntax-components-functions#func-uniqueCount)（名前）[`FROM`](/docs/insights/nrql-new-relic-query-language/nrql-reference/nrql-syntax-components-functions#sel-from) `Transaction`
       </td>
     </tr>
 
@@ -69,11 +82,11 @@ metaDescription: Using advanced NRQL mode to specify data and get a chart.
       </td>
 
       <td>
-        `httpResponseCode='404'`**に結果を絞り込む**
+        **結果をに絞り込む** `http.statusCode='404'`
       </td>
 
       <td>
-        [`WHERE`](/docs/insights/nrql-new-relic-query-language/nrql-reference/nrql-syntax-components-functions#sel-where) `httpResponseCode = '404'`
+        [`WHERE`](/docs/insights/nrql-new-relic-query-language/nrql-reference/nrql-syntax-components-functions#sel-where) `http.statusCode = '404'`
       </td>
     </tr>
 
@@ -97,7 +110,7 @@ metaDescription: Using advanced NRQL mode to specify data and get a chart.
       </td>
 
       <td>
-        `appName`ごとに**ファセットを適用**
+        **ごとにファセットを適用** `appName`
       </td>
 
       <td>
@@ -125,7 +138,7 @@ metaDescription: Using advanced NRQL mode to specify data and get a chart.
       </td>
 
       <td>
-        `直近3時間`を選択 — NRQLクエリで秒に変換
+        `Last 3 hrs`を選択 — NRQLクエリで秒に変換
       </td>
 
       <td>
@@ -151,7 +164,14 @@ metaDescription: Using advanced NRQL mode to specify data and get a chart.
 
 ## 詳細（NRQL）モードについての注 [#notes-nrql]
 
-NRQLで直接作成されたクエリは、基本モードで作成されたクエリより複雑な場合があります。[NRQLドキュメント](/docs/insights/nrql-new-relic-query-language/using-nrql/introduction-nrql)には、参照情報とクエリの例の両方が含まれます。この表では、留意すべき項目を特定します。
+NRQLで直接作成されたクエリは、基本モードで作成されたクエリより複雑な場合があります。たとえば、複数のNRQLクエリでウィジェットを作成する方法については、この短いビデオ（3分40秒）をご覧ください。
+
+<Video
+  id="73wzGefS_-c"
+  type="youtube"
+/>
+
+[NRQLドキュメント](/docs/insights/nrql-new-relic-query-language/using-nrql/introduction-nrql)には、参照情報とクエリの例の両方が含まれます。この表では、留意すべき追加項目を特定します。
 
 <table>
   <thead>
@@ -175,7 +195,11 @@ NRQLで直接作成されたクエリは、基本モードで作成されたク�
       <td>
         クエリの各文や関数について、ツールチップで有効なオプションのリストを表示できます。
 
-        ![crop-prompt-nrql.png](./images/crop-prompt-nrql.png "crop-prompt-nrql.png")
+        <img
+          title="crop-prompt-nrql.png"
+          alt="crop-prompt-nrql.png"
+          src={cropPromptNrql}
+        />
 
         <figcaption>
           詳細（NRQL）モードのプロンプトの例。
@@ -248,12 +272,3 @@ NRQLで直接作成されたクエリは、基本モードで作成されたク�
     </tr>
   </tbody>
 </table>
-
-## その他のヘルプ [#more_help]
-
-さらに支援が必要な場合は、これらのサポートと学習リソースを確認してください：
-
-* [Explorers Hub](https://discuss.newrelic.com/)を参照して、コミュニティから支援を受け、ディスカッションに参加してください。
-* [当社のサイトで回答を見つけ、サポートポータルの使用方法について学びます](/docs/using-new-relic/welcome-new-relic/get-started/find-help-use-support-portal)。
-* Linux、Windows、およびmacOSのトラブルシューティングツールである[New Relic Diagnosticsを実行します](/docs/using-new-relic/cross-product-functions/troubleshooting/new-relic-diagnostics)。
-* New Relicの[データセキュリティ](/docs/security)と[ライセンス](/docs/licenses)ドキュメントを見直してください。

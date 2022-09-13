@@ -8,6 +8,7 @@
     - [Unit tests](#unit-tests)
     - [Using multiple versions of Node](#using-multiple-versions-of-node)
     - [Cloning vs forking](#cloning-vs-forking)
+      - [Forks - GitHub Workflows / Actions](#forks---github-workflows--actions)
     - [Submitting a PR from a forked repo](#submitting-a-pr-from-a-forked-repo)
     - [Submitting a PR from a cloned repo](#submitting-a-pr-from-a-cloned-repo)
     - [Using the `develop` branch](#using-the-develop-branch)
@@ -62,7 +63,7 @@ The first time you build the site locally, it will take upwards of 20 minutes. T
 
 ### Dependencies
 
-Node v12 is used in this project as specified in [.nvmrc](https://github.com/newrelic/developer-website/blob/master/.nvmrc).
+Node v16 is used in this project as specified in [.nvmrc](https://github.com/newrelic/developer-website/blob/master/.nvmrc).
 
 ### Unit tests
 
@@ -72,16 +73,30 @@ have the tests automatically re-run, use `yarn run test:watch`
 ### Using multiple versions of Node
 
 If you intend to run multiple versions of Node please be aware that the New Relic
-Docs Site is currently on Node v12. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
+Docs Site is currently on Node v16. Therefore it's recommended you use Node Version Manager [NVM](https://github.com/nvm-sh/nvm) to manage Node versions.
 
 Review [this article](https://itnext.io/nvm-the-easiest-way-to-switch-node-js-environments-on-your-machine-in-a-flash-17babb7d5f1b)
 which clearly explains the setup and configuration of NVM.
 
 ### Cloning vs forking
 
-To be able to [clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repository and contribute you will need to be given write access to the repository. This is reserved for New Relic Doc Writers. Contact the Developer Enablement team (#help-deven-websites Slack channel) if you need write access.
+To be able to [clone](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) this repository and contribute you will need to be given write access to the repository. This is reserved for New Relic Doc Writers. Contact the Docs Engineering team (#help-documentation Slack channel) if you need write access.
 
 To contribute without write access, you can [fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) the repository and contribute as needed. If you're planning to leave a fork open for a long time (for example, you're working on a complex set of changes to many docs), [sync your fork](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork) occasionally to avoid merge conflicts.
+
+#### Forks - GitHub Workflows / Actions
+
+This repository contains workflows that are not meant to be run on forks. If they do run, they will fail and generate alerts on every failed run.
+
+By default, a user should see a prompt like this after cloning the repo when looking at the actions tab:
+
+![Disabled GitHub Actions](src/images/workflows_disabled_by_default.png 'disabled-workflows-prompt')
+
+If you do see this, then you are good to go -- DON'T enable the workflows.
+
+If the workflows are enabled and running, you will want to disable them. You can disable workflows by navigating to the settings of the forked repository, clicking on the `Actions` tab, and selecting the check to `Disable Actions` as shown below.
+
+![Manually Disabling Actions](src/images/disable_actions_manually.png 'disable-actions-manually')
 
 ### Submitting a PR from a forked repo
 
@@ -151,32 +166,43 @@ To submit a [Draft PR](https://github.blog/2019-02-14-introducing-draft-pull-req
 ### Using Conventional Commits
 
 Please help the maintainers by leveraging the following [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/)
-standards in your pull request title and commit messages.
+standards in your commit messages. You don't need to apply this format to the pull request title–just to commits.
+
+As a reminder, here's the format for a single-line commit, but you are welcome to add the optional body and footer messages.
+
+```
+<type>(optional scope): <description>
+```
+
+When choosing a type, you can pick from any of the standard types (feat, fix, style, test, or chore) or you can add your own.
+**Note**: There is a `documentation` type, but please refrain from using it for general documentation changes since it is intended for changes to the repository's documentation (such as `README.md` and `CONTRIBUTING.md`)
+
+As far as scope, we recommend that you include this because it helps us identify relevant commits. For the docs project, the scope might refer to the part of the docs you are editing (for example, APM or errors inbox). If you are suggesting a code change to the docs site, insert the section of the codebase you worked on.
+
+Here are some examples:
 
 #### Use `chore`
 
-- for minor changes / additions / corrections to content.
-- for minor changes / additions / corrections to images.
-- for minor non-functional changes / additions to github actions, github templates, package or config updates, etc
+Chores are best for changes that users don't see directly, such as improving unit tests or reducing technical debt. You might use them for minor non-functional changes/additions to github actions, github templates, package or config updates, etc.
 
 ```bash
-git commit -m "chore: adjusting config and content"
+git commit -m "chore(translation): extend translation unit test coverage"
 ```
 
 #### Use `fix`
 
-- for minor functional corrections to code.
+Fix is used for minor functional corrections to code.
 
 ```bash
-git commit -m "fix: typo and prop error in the code of conduct"
+git commit -m "fix(Log management): repair broken link in introduction"
 ```
 
 #### Use `feat`
 
-- for major functional changes or additions to code.
+Feat is for major functional changes or additions to code.
 
 ```bash
-git commit -m "feat(media): creating a video landing page"
+git commit -m "feat(errors inbox): add new documents"
 ```
 
 ### Deploy previews with Gatsby Cloud

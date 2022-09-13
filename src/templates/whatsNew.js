@@ -7,6 +7,7 @@ import {
   Layout,
   Link,
   MarkdownContainer,
+  ContributingGuidelines,
 } from '@newrelic/gatsby-theme-newrelic';
 import SEO from '../components/SEO';
 import PageTitle from '../components/PageTitle';
@@ -26,6 +27,7 @@ const WhatsNewTemplate = ({ data, location, pageContext }) => {
         learnMoreLink,
         getStartedLink,
       },
+      fields: { fileRelativePath },
     },
   } = data;
 
@@ -55,16 +57,15 @@ const WhatsNewTemplate = ({ data, location, pageContext }) => {
       >
         <div
           css={css`
-            font-size: 0.75rem;
+            font-size: 1rem;
             margin-bottom: 1rem;
-            color: var(--color-dark-600);
             display: flex;
             align-items: baseline;
           `}
         >
           <Icon
             name="fe-calendar"
-            size="0.75rem"
+            size="1rem"
             css={css`
               position: relative;
               top: 1px;
@@ -132,6 +133,18 @@ const WhatsNewTemplate = ({ data, location, pageContext }) => {
         `}
       >
         <MarkdownContainer dangerouslySetInnerHTML={{ __html: html }} />
+        <ContributingGuidelines
+          css={css`
+            margin-top: 1rem;
+            padding-left: 0;
+            > * {
+              justify-content: flex-start;
+              text-align: left;
+            }
+          `}
+          fileRelativePath={fileRelativePath}
+          issueLabels={['feedback', 'feedback-issue']}
+        />
       </Layout.Content>
     </>
   );
@@ -158,6 +171,9 @@ export const pageQuery = graphql`
         summary
         learnMoreLink
         getStartedLink
+      }
+      fields {
+        fileRelativePath
       }
     }
 
