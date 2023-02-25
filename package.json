@@ -61,7 +61,7 @@
     "remark-html": "^13.0.1",
     "remark-rehype": "^8.0.0",
     "rss": "^1.2.2",
-    "sequelize": "^6.21.3",
+    "sequelize": "^6.29.0",
     "sharp": "^0.30.7",
     "turndown": "^6.0.0",
     "unist-util-filter": "^2.0.3",
